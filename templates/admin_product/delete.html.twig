@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section>
+        <div class="mt-10 text-center text-xl font-sans container">
+            <div class="row">
+                <button class="bg-zinc-300 text-xl hover:bg-zinc-400 text-black py-2 px-4 rounded ">
+                    <a href="/admin">Админ панель</a>
+                </button><br>
+                <button class="bg-zinc-300 text-xl hover:bg-zinc-400 text-black py-2 px-4 rounded mt-5 mb-5">
+                    <a href="/admin/product"> &#8592; Назад</a>
+                </button>
+                <h4 class="">Удалить #{{ product.id }}</h4>
+                <p>Вы действительно хотите удалить этот товар?</p>
+                <form method="post">
+                    <input type="submit" name="submit" class="bg-zinc-300 text-xl hover:bg-zinc-400 text-black py-2 px-4 rounded mt-5" value="Удалить" />
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock %}

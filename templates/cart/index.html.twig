@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section>
+        <div class="container mx-auto mt-10  justify-center">
+            <div class="flex shadow-md my-10">
+                {% if cart.totalPrice > 0 %}
+                    <div class="w-3/4 bg-white px-10 py-10">
+                        <div class="flex justify-between border-black border-b pb-8">
+                            <h1 class="font-semibold text-2xl">Ваша корзина</h1>
+                            <h2 class="font-semibold text-2xl"></h2>
+                        </div>
+                        <div class="flex mt-10 mb-5">
+                            <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Манга</h3>
+                            <h3 class="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Количество</h3>
+                            <h3 class="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Цена</h3>
+                            <h3 class="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Итог</h3>
+                        </div>
+                        {% for cartProduct in cart.products %}
+                            <a href="/product/{{ cartProduct.id }}">
+                                <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
+                                    <div class="flex w-2/5"> <!-- product -->
+                                        <div class="w-20">
+                                            <img class="h-24" src="{{ cartProduct.image }}" alt="">
+                                        </div>
+                                        <div class="flex flex-col justify-between ml-4 flex-grow">
+                                            <span class="font-bold text-sm">{{ cartProduct.name }}</span>
+                                            <a href="/cart/delete/{{ cartProduct.id }}"
+                                               class="font-semibold hover:text-fuchsia-600 text-gray-500 text-xs">Удалить</a>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-center w-1/5">
+                                        <button data-id="{{ cartProduct.id }}" class="cart-remove-from-cart">
+                                            <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
+                                                <path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+                                            </svg>
+                                        </button>
+
+                                        <input id="product-{{ cartProduct.id }}" class="mx-2 border text-center w-8"
+                                               type="text" value="{{ cartProduct.count }}">
+
+                                        <button data-id="{{ cartProduct.id }}" class="cart-add-to-cart">
+                                            <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
+                                                <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <span class="text-center w-1/5 font-semibold text-sm">{{ cartProduct.price }} ₽</span>
+                                    <span class="text-center w-1/5 font-semibold text-sm">{{ cartProduct.totalPrice }} ₽</span>
+                                </div>
+                            </a>
+                        {% endfor %}
+
+                        <a href="/catalog/" class="flex font-semibold text-fuchsia-900 text-sm mt-10">
+
+                            <svg class="fill-current mr-2 text-fuchsia-900 w-4" viewBox="0 0 448 512">
+                                <path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z"/>
+                            </svg>
+                            Обратно в каталог
+                        </a>
+                    </div>
+                    <div id="summary" class="w-1/4 px-8 py-10">
+                        <h1 class="font-semibold text-2xl border-b border-black pb-8">Заказ</h1>
+                        <div class=" mt-20  border-black">
+                            <div class="mb-10 flex font-semibold justify-between py-6 text-sm uppercase">
+                                <span>Итого</span>
+                                <span>{{ cart.totalPrice }} ₽</span>
+                            </div>
+                            <button class="bg-zinc-300 font-semibold hover:bg-zinc-400 py-3 text-sm text-black uppercase w-full rounded">
+                                <a href="/cart/checkout">Оформить заказ</a></button>
+
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="flex justify-center">
+                        <button class=" -mt-16 mb-4 p-8 border rounded bg-zinc-200 w-96">
+                            <img class="" src="{{ asset('/template/images/brand/00000.png') }}"/>
+                            <div class="text-center mt-4">
+                                <a href="/catalog/"
+                                   class="bg-zinc-300 hover:bg-zinc-400 px-4 py-2 text-center text-sans rounded ">
+                                    Вернуться к покупкам</a>
+                            </div>
+                        </button>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section>
+        <div class="">
+            <div class="text-center ">
+                <div class="">
+                    <div class="mt-10 ">
+                        {% if errors|length > 0 %}
+                            {% for error in errors %}
+                                <p> - {{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                        {% if isSuccess %}
+                            <p class="mb-20 mt-32 text-xl font-sans">Заказ оформлен. Мы Вам перезвоним.</p>
+                        {% else %}
+                            <p class="font-sans text-xl">Выбрано товаров: {{ order.totalCount }}, на
+                                сумму: {{ order.totalPrice }}, ₽</p><br/>
+                            <p class="mb-2 font-sans text-base">Для оформления заказа заполните форму. Наш менеджер
+                                свяжется с Вами.</p>
+                            <div class="login-form">
+                                <form action="#" method="post">
+                                    <p class="mb-2 mt-2 font-sans text-base">Ваше имя</p>
+                                    <input type="text" name="userName" class="border-2 border-black rounded py-1 px-2"
+                                           placeholder="" value="{{ user.username }}"/>
+                                    <p class="mb-2  mt-2 font-sans text-base">Номер телефона</p>
+                                    <input type="text" name="userPhone" class="border-2 border-black rounded py-1 px-2"
+                                           placeholder="" value="{{ user.phone }}"/>
+                                    <p class="mb-2 mt-2 font-sans text-base">Комментарий к заказу</p>
+                                    <input type="text" name="userComment"
+                                           class="border-2 border-black rounded py-1 px-2" placeholder="Сообщение"
+                                           value="{{ order.userComment }}"/>
+                                    <br/>
+                                    <button class="bg-zinc-300 text-xl hover:bg-zinc-400 text-black  border-2 border-black font-sans py-2 px-4 rounded  mt-5 mb-5">
+                                        <input type="submit" name="submit" class="btn btn-default" value="Оформить"/>
+                                    </button>
+                                </form>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,70 @@
+<header class="bg-zinc-200">
+    <nav class="flex justify-between items-center sticky top-0 px-1 py-1 bg-zinc-300 text-xl text-black shadow-md md:px-20">
+        <!-- Logo -->
+        <a href="/">
+            <img style="height: 110px;" class="" src="{{ asset('/template/images/brand/7575.svg') }}">
+        </a>
+        <div id="toggler" class="md:hidden cursor-pointer">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </div>
+        <!-- Navigation -->
+        <div class="hidden md:flex items-center space-x-6">
+            <form>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 ">
+                        <svg aria-hidden="true" class="w-5 h-5 text-zinc-600 " fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <input class="block w-full p-2 pl-10 text-sm  border  border-black rounded-lg bg-zinc-200  "
+                           required>
+                    <button type="submit"
+                            class=" text-black opacity-70 hover:opacity-100 duration-300 absolute right-2.5 bottom-2.5 bg-zinc-200 hover:bg-zinc-300  font-sans rounded text-sm px-2 py-0 ">
+                        <b>Поиск</b></button>
+                </div>
+            </form>
+            <a class="p-2 border-b-4 border-zinc-300 hover:border-zinc-400 transition duration-200 ease-in-out"
+               href="/catalog/">Кaталог</a>
+            <a class="p-2 border-b-4 border-zinc-300 hover:border-zinc-400 transition duration-200 ease-in-out"
+               href="/news/">Новости</a>
+            <a class="p-2 border-b-4 border-zinc-300 hover:border-zinc-400 transition duration-200 ease-in-out"
+               href="/cart/">Корзина</a>
+            <a class="p-2 border-b-4 border-zinc-300 hover:border-zinc-400 transition duration-200 ease-in-out"
+               href="/contact/">Связь</a>
+        </div>
+        <!-- mobile nav -->
+        <div id="mobile__nav"
+             class=" fixed top-0 right-0 flex flex-col h-44 w-44 pt-10 bg-zinc-200 text-black transform translate-x-full transition duration-300 ease-in-out md:hidden">
+            <svg id="toggler__expanded" class=" w-6 h-6 absolute top-4 left-4 cursor-pointer" fill="none"
+                 stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+            <a class="w-full hover:bg-zinc-300 p-2 px-4 transition duration-300 ease-in-out"
+               href="/catalog/">Кaталог</a>
+            <a class="w-full hover:bg-zinc-300 p-2 px-4 transition duration-300 ease-in-out" href="/news/">Новости</a>
+            <a class="w-full hover:bg-zinc-300 p-2 px-4 transition duration-300 ease-in-out" href="/cart/">Корзина</a>
+            <a class="w-full hover:bg-zinc-300 p-2 px-4 transition duration-300 ease-in-out" href="/contact/">Связь</a>
+            <form>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 ">
+                        <svg aria-hidden="true" class="w-5 h-5 text-zinc-600 " fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <input class="block w-full p-2 pl-10 text-sm  border  border-black rounded-lg bg-zinc-200  "
+                           required>
+                    <button type="submit"
+                            class=" text-black opacity-70 hover:opacity-100 duration-300 absolute right-2.5 bottom-2.5 bg-zinc-200 hover:bg-zinc-300  font-sans rounded text-sm px-2 py-0 ">
+                        <b>Поиск</b></button>
+                </div>
+            </form>
+        </div>
+    </nav>
+    <section></section>
+</header>

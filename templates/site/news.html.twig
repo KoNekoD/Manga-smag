@@ -1,0 +1,192 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="text-gray-600 body-font overflow-hidden">
+        <div class="container px-5 py-24 mx-auto">
+            <div class="-my-8 ">
+                <div class="py-8 flex flex-wrap md:flex-nowrap divide-y-2 divide-zinc-300">
+                    <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col mr-8">
+
+          <span class="font-semibold title-font text-gray-700 ">
+            <img src="{{ asset('/template/images/brand/555.jpeg') }}">
+          </span>
+
+                    </div>
+                    <div class="md:flex-grow">
+                        <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">
+                            <span>НАМ 1 ДЕНЬ! 🎂</span>
+                        </h2>
+                        <p class="leading-relaxed">
+                            <span>Мы не можем не отметить это событие скидкой до 25%* на весь ассортимент с 5 по 7 ноября включительно!
+                                <br>
+                                Желаем удачи и благодарим за то, что этот год Вы были с нами! 💜<br>
+
+                                *В акции не участвуют товары по предварительному заказу, последние новинки и ряд книг издательства Азбука-Аттикус. Скидка 25% действует только на ассортимент книг издательства WOW, базовая скидка на остальной ассортимент — 20%. </span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="py-8 flex flex-wrap md:flex-nowrap divide-y-2 divide-zinc-300">
+
+                    <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col mr-8">
+                        <img src="{{ asset('/template/images/brand/1UDZLzfPvbuLLyQPGS938PXQhbWhyP0Gy0fSdxiT-432x_.jpeg') }}">
+                    </div>
+
+                    <div class="md:flex-grow">
+                        <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">
+                            <span>Доступна доставка службой Boxberry 🍒</span>
+                        </h2>
+                        <p class="leading-relaxed">Стоимость доставки рассчитывается автоматически. Для выбора Boxberry, при оформлении заказа необходимо выбрать где и как вы хотите получить ваш заказ — самовывоз или курьерская доставка на дом. При выборе типа доставки, вам останется нажать на удобную вам компанию, ввести адрес или выбрать пункт выдачи заказов на интерактивной карте.
+
+                            Спасибо, что вы с нами!
+
+                            С уважением, аниме интернет-магазин "WOW".✨</p>
+                    </div>
+                </div>
+
+                <div class="py-8 flex flex-wrap md:flex-nowrap divide-y-2 divide-zinc-300">
+
+                    <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col mr-8">
+                        <img src="{{ asset('/template/images/brand/bUH7QH5CbAkt4DgzsQZMRZIUVxLTH4o5a5HjFRnm-432x_.jpeg') }}">
+
+                    </div>
+                    <div class="md:flex-grow">
+                        <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">
+                            <span>Сюрприз от WOW!</span>
+                        </h2>
+                        <p class="leading-relaxed">С 24.09.2022 по 30.09.2022 действует скидка 15% на весь* ассортимент книг издательства WOW.<br>
+
+                            ‣ Манга<br>
+                            ‣ Ранобэ<br>
+                            ‣ Комиксы<br>
+                            ‣ Артбуки</p>
+                    </div>
+                </div>
+
+                <div class="py-8 flex flex-wrap md:flex-nowrap -mb-24 divide-y-2 divide-zinc-300">
+                    <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col mr-8">
+                        <img src="{{ asset('/template/images/brand/JOVBWNKEh0bWEDcP40o1YUbyhixo7wK14ELnd9z3-432x_.jpeg') }}">
+                    </div>
+                    <div class="md:flex-grow">
+                        <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">
+                            <span>Черная пятница в WOW!</span>
+                        </h2>
+                        <p class="leading-relaxed"> С 11 по 14 ноября включительно действует скидка 15% на весь* ассортимент товаров при выборе онлайн-оплаты! Готовьтесь к праздникам вместе с нами, не упустите шанс приобрести подарки своим самым близким людям или просто порадуйте себя обновками в коллекции! 🎁<br>*Актуальный размер скидки указан на сайте в период акции на каждом товаре. Акция не распространяется на товары по предзаказу и выделенный ассортимент книг издательства "Азбука-Аттикус".</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <a href="javascript:void(0)" id="switch_element" class=" border-solid border-2 block px-2 py-1 rounded border border-zinc-300 text-center" onclick="showHide('hidden_news','switch_element')">Посмотеть еще</a>
+    <div id="hidden_news" style="display: none;">
+
+        <section class="text-gray-600 body-font overflow-hidden">
+            <div class="container px-5 py-24 mx-auto">
+                <div class="-my-8 ">
+
+                    <div class="py-8 flex flex-wrap md:flex-nowrap -mt-24 divide-y-2 divide-zinc-300">
+                        <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col mr-8">
+                            <img src="{{ asset('/template/images/brand/hqQGTOzPd0cU1GGECaSpCMiYH9sQHbl650LDFMzE-432x_.jpeg') }}">
+                        </div>
+                        <div class="md:flex-grow">
+                            <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">
+                                <span>Скидки на 11.11 в WOW! 🧧</span>
+                            </h2>
+                            <p class="leading-relaxed">С 11 по 13 ноября включительно, вас ждут скидки 20% на весь* ассортимент нашего интернет-магазина.<br>
+                                Порадуйте себя выгодными покупками в ежегодный всемирный день шоппинга!<br>
+                                *В акции не участвуют товары по предварительному заказу, последние новинки и ряд книг издательства Азбука-Аттикус.<br>
+                                *Актуальный размер скидки указан на сайте в период акции на каждом товаре.</p>
+                        </div>
+                    </div>
+
+                    <div class="py-8 flex flex-wrap md:flex-nowrap divide-y-2 divide-zinc-300">
+
+                        <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col mr-8">
+                            <img src="{{ asset('/template/images/brand/qB6TlooueaOGGt1ZyCe35EIC9m2Oxyhwb5ZDMucn-432x_.jpeg') }}">
+
+                        </div>
+                        <div class="md:flex-grow">
+                            <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">
+                                <span>С радостью сообщаем, что мы принимаем участие в акции «День Бэтмена»! 🔥 🦇</span>
+                            </h2>
+                            <p class="leading-relaxed">В этом году издательство «Азбука» порадует нас релизами четырех отличных книг:<br>
+
+                                ‣ Злодеи Готэма. Юбилейный спецвыпуск<br>
+                                ‣ Злодеи Готэма. Юбилейный спецвыпуск. <br>
+                                ‣ Бэтмен. Рептилия<br>
+                                ‣ Бэтмен и сын</p>
+                        </div>
+
+                    </div>
+                    <div class="py-8 flex flex-wrap md:flex-nowrap divide-y-2 divide-zinc-300">
+
+                        <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col mr-8">
+                            <img src="{{ asset('/template/images/brand/tHUEO1lmgAufykNUTQN4iRpuT7MR6vfFBwK8mdtc-440x_.png') }}">
+
+                        </div>
+                        <div class="md:flex-grow">
+                            <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">
+                                <span>Акция "День Варенья"</span>
+                            </h2>
+                            <p class="leading-relaxed"> Скидка распространяется в интернет-магазине и в розничных магазинах сети. Скидка действует разово не распространяется на предзаказы.<br>Для получения данной скидки вам необходимо прислать документ подтверждающий дату рождения в сообщения группы ВКонтакте. Суммируется со скидками и акциями проходящими в магазине и интернет-магазине.</p>
+
+                        </div>
+                    </div>
+                    <div class="py-8 flex flex-wrap md:flex-nowrap divide-y-2 divide-zinc-300">
+
+                        <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col mr-8">
+                            <img src="{{ asset('/template/images/brand/mGyKHCgh8ui6HYaOzOmz1Ra6DOH05pZzOAQWrcFT-432x_.jpeg') }}">
+
+                        </div>
+                        <div class="md:flex-grow">
+                            <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">
+                                <span>Хэллоуинская распродажа в WOW! 🎃</span>
+                            </h2>
+                            <p class="leading-relaxed"> С 29.10.2022 по 31.10.2022 включительно, мы дарим нашим любимым клиентам скидку в 15% на весь* ассортимент товаров. Страшно представить,<br> как может пополниться ваша коллекция фигурок, манги или комиксов с такими ужасно выгодными предложениями.<br>
+
+                                Поспешите порадовать себя!<br></p>
+                        </div>
+
+                    </div>
+
+                    <div class="py-8 flex flex-wrap md:flex-nowrap divide-y-2 divide-zinc-300">
+
+                        <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col mr-8">
+                            <img src="{{ asset('/template/images/brand/bZdn2MbGAdPgFGphaX6Uef5fCuXVz9bJTKjleQfw-432x_.png') }}">
+
+                        </div>
+                        <div class="md:flex-grow">
+                            <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">
+                                <span> Сезонная скидка 10% в выходные! 💚</span>
+                            </h2>
+                            <p class="leading-relaxed"> С 22 по 23 апреля включительно, не откажите себе в удовольствии приобрести желанный аниме мерч, фигурки, мангу, ранобэ и многое другое со скидкой 10% в нашем фирменном аниме-магазине WOW!<br>
+
+                                Акция действует на весь* ассортимент товаров интернет-магазина и розничного магазина в Санкт-Петербурге. Количество товара ограничено.<br></p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <a href="javascript:void(0)" class=" block px-4 py-1 rounded border-solid border-2 border-zinc-300 text-center" onclick="showHide('hidden_news','switch_element')">Скрыть</a>
+        <script>
+            function showHide(element_id, element_id2) {
+                if (document.getElementById(element_id)) {
+                    var element_block = document.getElementById(element_id);
+                    var element_switch = document.getElementById(element_id2);
+                    if (element_block.style.display != "block") {
+                        element_block.style.display = "block";
+                        element_switch.style.display = "none";
+                    } else {
+                        element_block.style.display = "none";
+                        element_switch.style.display = "block";
+                    }
+                }
+            }
+        </script>
+
+
+{% endblock %}

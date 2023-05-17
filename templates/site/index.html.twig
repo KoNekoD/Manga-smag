@@ -1,0 +1,366 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div>
+        <img class="h-64 w-full" src="{{ asset('/template/images/brand/akibastrip_283.jpg') }}">
+    </div>
+
+    <!--блок о нас-->
+    <div class="max-w-md mx-auto bg-zinc-200  overflow-hidden md:max-w-4xl mb-10 mt-10">
+        <div class="md:flex">
+            <div class="md:shrink-0">
+                <img class="h-96 w-full object-cover rounded-lg  "
+                     src="{{ asset('/template/images/brand/bf8b41d191ab4f098d6a206666531ce9.jpg') }}"
+                     alt="Modern building architecture">
+            </div>
+            <div class="p-8 mt-11">
+                <p class="mt-2 text-black text-xl"><b>О НАС</b><br>
+                    Интернет-магазин аниме-товаров WOW является фирменным магазином одноименного издательства манги и
+                    комиксов.<br> Здесь вы сможете купить продукцию нашего издательства из первых рук по самым низким
+                    ценам
+                    и получить ее в самые кратчайшие сроки. </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- большой слайдер-->
+    <div class="adaptivn-slayder mt-10 mb-10  ">
+        <div class="parag ">
+            <img class="rounded-lg " src="{{ asset('/template/images/brand/1.svg') }}" alt="1">
+        </div>
+        <div class="parag">
+            <img class="rounded-lg " src="{{ asset('/template/images/brand/2.svg') }}" alt="2">
+        </div>
+        <div class="parag">
+            <img class="rounded-lg " src="{{ asset('/template/images/brand/3.svg') }}" alt="3">
+        </div>
+        <div class="parag">
+            <img class="rounded-lg " src="{{ asset('/template/images/brand/4.svg') }}" alt="4">
+        </div>
+        <div class="parag">
+            <img class="rounded-lg " src="{{ asset('/template/images/brand/5.svg') }}" alt="5">
+        </div>
+        <div class="parag">
+            <img class="rounded-lg " src="{{ asset('/template/images/brand/6.svg') }}" alt="6">
+        </div>
+        <div class="parag">
+            <img class="rounded-lg " src="{{ asset('/template/images/brand/7.svg') }}" alt="7">
+        </div>
+        <div class="parag">
+            <img class="rounded-lg " src="{{ asset('/template/images/brand/8.svg') }}" alt="8">
+        </div>
+        <div class="parag">
+            <img class="rounded-lg " src="{{ asset('/template/images/brand/9.svg') }}" alt="9">
+        </div>
+        <a class="prev" onclick="minusSlide()">❮</a>
+        <a class="next" onclick="plusSlide()">❯</a>
+    </div>
+
+    <!-- большой слайдер-->
+    <style>
+        .adaptivn-slayder {
+            max-width: 90%;
+            position: relative;
+            height: 350px;
+            margin-bottom: 15px;
+        }
+
+
+        .adaptivn-slayder .parag img {
+            object-fit: cover;
+            width: 100%;
+            height: 400px;
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        .adaptivn-slayder .parag1 img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        .adaptivn-slayder .prev,
+        .adaptivn-slayder .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            margin-top: -22px;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+        }
+
+        .adaptivn-slayder .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .adaptivn-slayder .prev:hover,
+        .adaptivn-slayder .next:hover {
+            background-color: rgba(25, 24, 24, 0.8);
+        }
+
+        .beksun-slayda {
+            position: absolute;
+            color: #f4f4f7;
+            font-size: 35px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-shadow: 1px 1px 1px #141415, 0 0 1em #141415;
+        }
+
+        .noguma-pomoki-kadra {
+            cursor: pointer;
+            height: 12px;
+            width: 12px;
+            margin: 0 2px;
+            background-color: #ddd;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .deystvuyus,
+        .noguma-pomoki-kadra:hover {
+            background-color: #aaa;
+        }
+
+        .adaptivn-slayder .parag {
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 1.5s;
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+    </style>
+
+    <!-- маленький слайдер-->
+    <style>
+        .gallery-item {
+            scroll-snap-align: start;
+        }
+
+        .gallery {
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+        }
+    </style>
+
+
+
+
+    <!-- маленький слайдер-->
+    <main class="mt-20 ml-10 mr-10">
+        <div class="flex flex-col  " data-controller="slider">
+            <p class="text-left  font-sans text-black text-4xl ml-10 mb-10">Скоро в продаже</p>
+            <div class="flex overflow-x-scroll" data-slider-target="scrollContainer">
+                <div class="w-60 h-70 px-2 flex-shrink-0 mb-2 " data-slider-target="image" id="1">
+                    <img class="rounded-lg" src="{{ asset('/template/images/brand/1.webp') }}"/>
+                </div>
+                <div class="w-60 h-70 px-2 flex-shrink-0 mb-2 " data-slider-target="image" id="2">
+                    <img class="rounded-lg" src="{{ asset('/template/images/brand/2.webp') }}"/>
+                </div>
+                <div class="w-60 h-70 px-2 flex-shrink-0 mb-2" data-slider-target="image" id="3">
+                    <img class="rounded-lg" src="{{ asset('/template/images/brand/3.webp') }}"/>
+                </div>
+                <div class="w-60 h-70 px-2 flex-shrink-0 mb-2" data-slider-target="image" id="4">
+                    <img class="rounded-lg" src="{{ asset('/template/images/brand/4.webp') }}"/>
+                </div>
+                <div class="w-60 h-70 px-2 flex-shrink-0 mb-2" data-slider-target="image" id="5">
+                    <img class="rounded-lg" src="{{ asset('/template/images/brand/5.webp') }}"/>
+                </div>
+                <div class="w-60 h-70 px-2 flex-shrink-0 mb-2" data-slider-target="image" id="6">
+                    <img class="rounded-lg" src="{{ asset('/template/images/brand/6.webp') }}"/>
+                </div>
+                <div class="w-60 h-70 px-2 flex-shrink-0 mb-2" data-slider-target="image" id="7">
+                    <img class="rounded-lg" src="{{ asset('/template/images/brand/7.webp') }}"/>
+                </div>
+                <div class="w-60 h-70 px-2 flex-shrink-0 mb-2" data-slider-target="image" id="8">
+                    <img class="rounded-lg" src="{{ asset('/template/images/brand/8.webp') }}"/>
+                </div>
+                <div class="w-60 h-70 px-2 flex-shrink-0 mb-2" data-slider-target="image" id="9">
+                    <img class="rounded-lg" src="{{ asset('/template/images/brand/9.webp') }}"/>
+                </div>
+                <div class="w-60 h-70 px-2 flex-shrink-0 mb-2" data-slider-target="image" id="10">
+                    <img class="rounded-lg" src="{{ asset('/template/images/brand/10.webp') }}"/>
+                </div>
+                <div class="w-60 h-70 px-2 flex-shrink-0 mb-2" data-slider-target="image" id="11">
+                    <img class="rounded-lg" src="{{ asset('/template/images/brand/11.webp') }}"/>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+
+
+    <main class="mt-10 ml-10 mr-10">
+        <div data-controller="slider">
+            <p class="text-left  font-sans text-black text-4xl ml-10 mb-10">Наши новинки</p>
+            <div class="flex overflow-x-scroll mb-6" data-slider-target="scrollContainer">
+                <div class="" data-slider-target="image" id="1">
+                    <div class="flex items-stretch">
+                        {% for product in latestProducts %}
+                            <div class="w-48 bg-white drop-shadow-md rounded-lg flex-col justify-between items-center ml-2 mr-2 mb-2">
+                                <a href="/product/{{ product.id }}">
+                                    <img class="object-cover rounded-tl-lg rounded-tr-lg"
+                                         style="height: 300px; width: 210px;" src="<{{ product.image }}"></a>
+                                <div class="px-5 py-3 space-y-2  grid grid-rows-3">
+                                    <h3 class="text-lg">
+                                        {{ product.name }}
+                                    </h3>
+                                    <p class="space-x-2 grid-flow-row">
+                                    <span class="text-2xl font-light">
+                                        <b>{{ product.price }}₽</b>
+                                    </span>
+                                    </p>
+                                    {% if is_granted('ROLE_USER') %}
+                                        <div class="flex justify-between items-center pb-2">
+                                            <a href="#" class="px-4 py-2 bg-zinc-300 hover:bg-zinc-400
+                text-center font-sans text-base text-black rounded duration-300 add-to-cart"
+                                               data-id="{{ product.id }}">
+                                                В корзину</a>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <!--блок о нас-->
+    <p class="text-left  font-sans text-black text-4xl ml-10 mb-10">Контакты</p>
+    <div class="flex justify-center mb-10">
+        <div class="flex flex-col md:flex-row md:max-w-6xl rounded-lg bg-zinc-100 shadow-lg ">
+            <img class="  h-64 md:h-auto object-cover md:w-72 rounded-t-lg md:rounded-none md:rounded-l-lg "
+                 src="{{ asset('/template/images/brand/5f4f21b364ad8a3d8e22708e4f9fabe0.jpg') }}" alt=""/>
+            <div class="p-6 flex flex-col justify-start">
+                <p class="text-gray-900 text-ms font-sans mb-2"><b>Адрес:</b>
+                <p class="text-sm">190005, г. Санкт-Петербург, вн. тер. г. Муниципальный округ Измайловское, <br>ул.
+                    Егорова, д. 26А Литера Б, помещ. 8, 9 (11-Н)</p>
+                <p class="text-gray-900 text-ms font-sans mb-2"><b>Почта:</b>
+                <p class="text-sm">WOW@MANGA.COM</p>
+                <p class="text-gray-900 text-ms font-sans mb-2"><b>Телефон:</b>
+                <p class="text-sm">8 (555) 544-88-55 </p>
+                <p class="text-gray-900 text-ms font-sans mb-2"><b>Режим работы интернет-магазина:</b>
+                <p class="text-sm">ПН-ПТ с 9:00 до 18:00 (МСК)</p>
+                <p class="text-gray-900 text-ms font-sans mb-2"><b>Реквизиты:</b>
+                <p class="text-sm">Общество с ограниченной ответственностью «ЭксЭл Медиа Ретейл<br>
+                    ОГРН 1217800181939<br>
+                    ИНН 7838099431, КПП 783801001<br>
+                    ОКПО 57598968, ОКТМО 40305000<br>
+                    р/с 40702810255000070353 в СЕВЕРО-ЗАПАДНЫЙ БАНК ПАО СБЕРБАНК<br>
+                    к/с 30101810500000000653</p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- маленький слайдер-->
+    <script>
+        (() => {
+            const application = Stimulus.Application.start()
+
+            application.register("slider", class extends Stimulus.Controller {
+                static get targets() {
+                    return [""]
+                }
+            })
+        })()
+    </script>
+    <script>
+        (() => {
+            const application = Stimulus.Application.start()
+
+            application.register("slider", class extends Stimulus.Controller {
+                static get targets() {
+                    return ["scrollContainer", "image", "indicator"]
+                }
+
+                initialize() {
+                    this.observer = new IntersectionObserver(this.onIntersectionObserved.bind(this), {
+                        root: this.scrollContainerTarget,
+                        threshold: 0.5
+                    })
+                    this.imageTargets.forEach(image => {
+                        this.observer.observe(image)
+                    })
+                }
+
+                onIntersectionObserved(entries) {
+                    entries.forEach(entry => {
+                        if (entry.intersectionRatio > 0.5) {
+                            const intersectingIndex = this.imageTargets.indexOf(entry.target)
+                            this.indicatorTargets[intersectingIndex].classList.add("bg-blue-900")
+                        } else {
+                            const intersectingIndex = this.imageTargets.indexOf(entry.target)
+                            this.indicatorTargets[intersectingIndex].classList.remove("bg-blue-900")
+                        }
+                    })
+                }
+            })
+        })()
+        scrollTo()
+        {
+            const imageId = event.target.dataset.imageId
+            const imageElement = document.getElementById(imageId)
+            const imageCoordinates = imageElement.getBoundingClientRect()
+            this.scrollContainerTarget.scrollTo({
+                left: (this.scrollContainerTarget.scrollLeft + imageCoordinates.left),
+                top: false,
+                behavior: "smooth"
+            })
+        }
+    </script>
+
+    <!-- большой слайдер-->
+    <script>
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlide() {
+            showSlides(slideIndex += 1);
+        }
+
+        function minusSlide() {
+            showSlides(slideIndex -= 1);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("parag");
+            var dots = document.getElementsByClassName("noguma-pomoki-kadra");
+            if (n > slides.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = slides.length
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace("deystvuyus", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " deystvuyus";
+        }
+    </script>
+{% endblock %}

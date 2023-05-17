@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="flex justify-center mt-10 mb-10">
+        <div class="flex flex-col rounded-lg bg-zinc-100 shadow-lg">
+            <div class="p-6 flex flex-col justify-start">
+                <div class="text-center">
+                    <button class="bg-zinc-300 text-xl hover:bg-zinc-400 text-black py-2 px-4 rounded mt-5">
+                        <a href="/admin">Админ панель</a>
+                    </button>
+                    <br>
+                    <button class="font-sans bg-zinc-300 text-xl hover:bg-zinc-400 text-black py-2 px-4 rounded mt-5">
+                        <a href="/admin/order"> &#8592; Назад</a>
+                    </button>
+                    <h4 class="text-xl font-sans mb-2">Информация о заказе #{{ order.id }}</h4>
+                    <div class="flex justify-center text-base font-sans">
+                        <table class="border-2 border-black table-bordered table-striped table ">
+                            <tr>
+                                <td class="border-2 border-black px-4 py-2">Номер заказа</td>
+                                <td>{{ order.id }}</td>
+                            </tr>
+                            <tr>
+                                <td class="border-2 border-black px-4 py-2">Имя клиента</td>
+                                <td>{{ order.userName }}</td>
+                            </tr>
+                            <tr>
+                                <td class="border-2 border-black px-4 py-2">Телефон клиента</td>
+                                <td>{{ order.userPhone }}</td>
+                            </tr>
+                            <tr>
+                                <td class="border-2 border-black px-4 py-2">Комментарий клиента</td>
+                                <td>{{ order.userComment }}</td>
+                            </tr>
+                            {% if order.userId is not 0 %}
+                            <tr>
+                                <td class="border-2 border-black px-4 py-2">ID клиента</td>
+                                <td>{{ order.userId }}</td>
+                            </tr>
+                            {% endif %}
+                            <tr>
+                                <td class="border-2 border-black px-4 py-2">Статус заказа</td>
+                                <td>{{ order.statusText }}</td>
+                            </tr>
+                            <tr>
+                                <td class="border-2 border-black px-4 py-2">Дата заказа</td>
+                                <td>{{ order.createdAt }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <h5 class="text-xl font-sans mb-2">Товары в заказе</h5>
+                    <div class="flex justify-center text-base font-sans">
+                        <table class="border-2 border-black table-bordered table-striped table ">
+                            <tr class="border-2 border-black">
+                                <th class="border-2 border-black px-4 py-2">ID товара</th>
+                                <th class="border-2 border-black px-4 py-2">Артикул товара</th>
+                                <th class="border-2 border-black px-4 py-2">Название</th>
+                                <th class="border-2 border-black px-4 py-2">Цена</th>
+                                <th class="border-2 border-black px-4 py-2">Количество</th>
+                            </tr>
+                            {% for orderProduct in orderProducts %}
+                            <tr>
+                                <td>{{ orderProduct.id }}</td>
+                                <td>{{ orderProduct.code }}</td>
+                                <td>{{ orderProduct.name }}</td>
+                                <td>${{ orderProduct.price }}</td>
+                                <td>{{ orderProduct.count }}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
