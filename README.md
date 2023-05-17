@@ -4,7 +4,7 @@
 * [X] Admin
 * [X] User
 * [X] Security
-* [ ] Cart
+* [X] Cart
 * [ ] Site
 * [ ] Product
 * [ ] Catalog
@@ -24,10 +24,3 @@
 'product/([0-9]+)' => 'product/view/$1',
 //каталог
 'catalog' => 'catalog/index',
-//корзина:
-'cart/add/([0-9]+)' => 'cart/add/$1',// actionAdd в CartController
-'cart/delete/([0-9]+)' => 'cart/delete/$1',// actionDelete в CartController
-'cart' => 'cart/index',// actionIndex в CartController
-'cart/addAjax/([0-9]+)' => 'cart/addAjax/$1', // actionAddAjax в CartController
-'cart/checkout' => 'cart/checkout',
-'cart/removeAjax/([0-9]+)' => 'cart/decrementProduct/$1',
