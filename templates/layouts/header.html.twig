@@ -29,13 +29,13 @@
                 </div>
             </form>
             <a class="p-2 border-b-4 border-zinc-300 hover:border-zinc-400 transition duration-200 ease-in-out"
-               href="/catalog/">Кaталог</a>
+               href="{{ path('app_product_catalog') }}">Кaталог</a>
             <a class="p-2 border-b-4 border-zinc-300 hover:border-zinc-400 transition duration-200 ease-in-out"
-               href="/news/">Новости</a>
+               href="{{ path('app_site_news') }}">Новости</a>
             <a class="p-2 border-b-4 border-zinc-300 hover:border-zinc-400 transition duration-200 ease-in-out"
-               href="/cart/">Корзина</a>
+               href="{{ path('app_cart_index') }}">Корзина</a>
             <a class="p-2 border-b-4 border-zinc-300 hover:border-zinc-400 transition duration-200 ease-in-out"
-               href="/contact/">Связь</a>
+               href="{{ path('app_site_contact') }}">Связь</a>
         </div>
         <!-- mobile nav -->
         <div id="mobile__nav"
@@ -45,10 +45,13 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
             <a class="w-full hover:bg-zinc-300 p-2 px-4 transition duration-300 ease-in-out"
-               href="/catalog/">Кaталог</a>
-            <a class="w-full hover:bg-zinc-300 p-2 px-4 transition duration-300 ease-in-out" href="/news/">Новости</a>
-            <a class="w-full hover:bg-zinc-300 p-2 px-4 transition duration-300 ease-in-out" href="/cart/">Корзина</a>
-            <a class="w-full hover:bg-zinc-300 p-2 px-4 transition duration-300 ease-in-out" href="/contact/">Связь</a>
+               href="{{ path('app_product_catalog') }}">Кaталог</a>
+            <a class="w-full hover:bg-zinc-300 p-2 px-4 transition duration-300 ease-in-out"
+               href="{{ path('app_site_news') }}">Новости</a>
+            <a class="w-full hover:bg-zinc-300 p-2 px-4 transition duration-300 ease-in-out"
+               href="{{ path('app_cart_index') }}">Корзина</a>
+            <a class="w-full hover:bg-zinc-300 p-2 px-4 transition duration-300 ease-in-out"
+               href="{{ path('app_site_contact') }}">Связь</a>
             <form>
                 <div class="relative">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 ">

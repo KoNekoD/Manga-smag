@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\Products\Entity\Product;
 use App\Users\Entity\User;
 use App\Users\Service\UserPasswordHasherInterface;
+use Carbon\Carbon;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -57,6 +58,7 @@ class AppFixtures extends Fixture
             ['Жизнь бродячего кота. Том 3.', 44, 500, 'Нанао и Мати ― бродячие коты, для которых каждый день может стать последним. Люди для них ― просто источник пропитания или даже враждебное окружение. Однажды судьба сводит их с Ёсино Наритой, ненавидящей кошек, и эта встреча ничем хорошим не заканчивается. Но именно она послужит началом больших перемен в жизни двух котов и одного человека.', '/upload/images/product/46.webp']
         ];
 
+        Carbon::setTestNow('2020-01-01');
         foreach ($productsLegacy as $item) {
             $product = new Product(
             // 0 `name`, 1 `code`, 2 `price`, 3 `description`, 4 `image`
@@ -67,6 +69,7 @@ class AppFixtures extends Fixture
                 $item[4]
             );
             $manager->persist($product);
+            Carbon::setTestNow(Carbon::getTestNow()->addDays(2));
         }
 
 

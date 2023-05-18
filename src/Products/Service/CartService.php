@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Cart\Service;
+namespace App\Products\Service;
 
-use App\Cart\DTO\CartDTO;
+use App\Products\DTO\CartDTO;
 use App\Products\Repository\ProductRepository;
 use App\Shared\Service\SerializerServiceInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -29,14 +29,14 @@ class CartService
     {
         $session = $this->requestStack->getSession();
 
-        $storedCart = $this->serializerService->deserialize(
-            $session->get('cart'),
-            CartDTO::class
-        );
-
-        if (null === $storedCart) {
+        if (null === $session->get('cart')) {
             $storedCart = new CartDTO();
             $session->set('cart', $this->serializerService->serialize($storedCart));
+        } else {
+            $storedCart = $this->serializerService->deserialize(
+                $session->get('cart'),
+                CartDTO::class
+            );
         }
 
         if (!empty($storedCart->products)) {

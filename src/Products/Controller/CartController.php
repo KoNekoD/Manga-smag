@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Cart\Controller;
+namespace App\Products\Controller;
 
-use App\Cart\DTO\CartCheckoutDTO;
-use App\Cart\Service\CartService;
+use App\Products\DTO\CartCheckoutDTO;
 use App\Products\Entity\Order;
+use App\Products\Service\CartService;
 use App\Shared\Security\UserFetcherInterface;
 use App\Shared\Service\SerializerServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
@@ -16,7 +16,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-#[Route('/cart')]
 class CartController extends AbstractController
 {
     public function __construct(
@@ -29,7 +28,7 @@ class CartController extends AbstractController
     {
     }
 
-    #[Route('/', name: 'app_cart_index')]
+    #[Route('/cart', name: 'app_cart_index')]
     public function index(): Response
     {
         return $this->render('cart/index.html.twig', [
@@ -37,7 +36,7 @@ class CartController extends AbstractController
         ]);
     }
 
-    #[Route('/checkout', name: 'app_cart_checkout')]
+    #[Route('/cart/checkout', name: 'app_cart_checkout')]
     public function checkout(Request $request): Response
     {
         $cart = $this->cartService->getCartAndRefreshData();
@@ -91,7 +90,7 @@ class CartController extends AbstractController
         ]);
     }
 
-    #[Route('/add/ajax/{id}', name: 'app_cart_add_ajax')]
+    #[Route('/cart/add/ajax/{id}', name: 'app_cart_add_ajax')]
     public function addAjax(int $id): Response
     {
         $this->cartService->addOneProduct($id);
@@ -99,7 +98,7 @@ class CartController extends AbstractController
         return new Response(status: Response::HTTP_NO_CONTENT);
     }
 
-    #[Route('/remove/ajax/{id}', name: 'app_cart_remove_ajax')]
+    #[Route('/cart/remove/ajax/{id}', name: 'app_cart_remove_ajax')]
     public function removeAjax(int $id): Response
     {
         $this->cartService->removeOneProduct($id);

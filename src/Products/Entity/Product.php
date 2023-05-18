@@ -4,16 +4,22 @@ declare(strict_types=1);
 
 namespace App\Products\Entity;
 
+use Carbon\Carbon;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
 #[ORM\Table(name: 'manga_products')]
 class Product
 {
+    const LATEST_PRODUCTS_COUNT = 10;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
+
+    #[ORM\Column(type: 'datetime_immutable')]
+    private \DateTimeImmutable $createdAt;
 
 
     public function __construct(
@@ -29,6 +35,7 @@ class Product
         private ?string $image = null,
     )
     {
+        $this->createdAt = (new Carbon())->toDateTimeImmutable();
     }
 
     public function getId(): ?int

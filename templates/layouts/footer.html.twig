@@ -35,7 +35,7 @@
             <div class="mb-4">
                 <ul class="list-none mb-0">
                     <li>
-                        <a href="/catalog/"
+                        <a href="{{ path('app_product_catalog') }}"
                            class="text-black opacity-70 hover:opacity-100 duration-300 text-xl">Каталог</a>
                     </li>
                     <li>
@@ -61,7 +61,8 @@
                         <?php if (User::isLogged()) : ?>
                         <div>
                             <?php if (AdminBase::isAdmin()) : ?>
-                            <a href="/admin/" class="text-black opacity-70 hover:opacity-100 duration-300 text-xl">
+                            <a href="{{ path('app_admin_index') }}"
+                               class="text-black opacity-70 hover:opacity-100 duration-300 text-xl">
                                 Админ панель
                             </a>
                             <?php endif; ?>
