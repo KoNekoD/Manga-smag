@@ -1,3 +1,7 @@
+# Начальные действия:
+
+1. Скопировать .env файл и вставить под названием .env.local
+
 # Подготовка к запуску:
 
 bin/console doctrine:database:create
