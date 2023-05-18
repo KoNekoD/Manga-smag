@@ -33,7 +33,13 @@ class MeController extends AbstractController
     #[Route('/me/edit', name: 'app_me_edit')]
     public function edit(): Response
     {
-        return $this->render('users/me/edit.html.twig');
+        $errors = [];
+        return $this->render('users/me/edit.html.twig', [
+            'errors' => $errors,
+            'user' => $this->userRepository->find(
+                $this->userFetcher->getAuthUser()->getId()
+            )
+        ]);
     }
 
     #[Route('/me/logout', name: 'app_me_logout')]

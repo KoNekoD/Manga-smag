@@ -42,7 +42,6 @@ class CartController extends AbstractController
         $cart = $this->cartService->getCartAndRefreshData();
 
         if (empty($cart->products)) {
-            // @TODO app_site_index does not exist
             return $this->redirectToRoute('app_site_index');
         }
 
