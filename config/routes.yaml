@@ -1,5 +1,11 @@
-controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
-    type: attribute
+users:
+  resource:
+    path: ../src/Users/Infrastructure/Controller/
+    namespace: App\Users\Infrastructure\Controller\
+  type: attribute
+
+security:
+  resource:
+    path: ../src/Security/Infrastructure/Controller/
+    namespace: App\Security\Infrastructure\Controller\
+  type: attribute

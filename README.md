@@ -24,3 +24,7 @@
 'product/([0-9]+)' => 'product/view/$1',
 //каталог
 'catalog' => 'catalog/index',
+
+## Entity implementations
+
+* [X] User(Security)

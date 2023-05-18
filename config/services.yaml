@@ -20,5 +20,42 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+    _instanceof:
+        App\Shared\Application\Command\CommandHandlerInterface:
+            tags:
+                - { name: messenger.message_handler, bus: command.bus }
+
+        App\Shared\Application\Query\QueryHandlerInterface:
+            tags:
+                - { name: messenger.message_handler, bus: query.bus }
+
+        App\Shared\Domain\Event\EventHandlerInterface:
+            tags:
+                - { name: messenger.message_handler, bus: event.bus }
+
+
+    App\Shared\Infrastructure\Doctrine\DomainEventSubscriber:
+        tags: [ { name: 'doctrine.event_subscriber' } ]
+        arguments:
+            $containerBag: '@service_container'
+
+    App\Shared\Application\EventListener\ExceptionListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception }
+
+    App\Users\Infrastructure\Controller\:
+        resource: '../src/Users/Infrastructure/Controller/'
+        tags: [ 'controller.service_arguments' ]
+
+    App\Security\Infrastructure\Controller\:
+        resource: '../src/Security/Infrastructure/Controller/'
+        tags: [ 'controller.service_arguments' ]
+
+    App\Security\Infrastructure\Controller\SecurityController:
+        arguments:
+            $authenticator: '@security.authenticator.form_login.main'
+
+
+
+
+

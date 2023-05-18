@@ -622,11 +622,11 @@
                 const mNav = document.getElementById("mobile__nav");
                 const close = document.getElementById("toggler__expanded");
 
-                toggler.addEventListener("click", () => {
+                toggler?.addEventListener("click", () => {
                     mNav.classList.remove("translate-x-full");
                 });
 
-                close.addEventListener("click", () => {
+                close?.addEventListener("click", () => {
                     mNav.classList.add("translate-x-full");
                 });
             </script>
