@@ -2,7 +2,7 @@
 # Files in the packages/ subdirectory configure your dependencies.
 
 # Put parameters here that don't need to change on each machine where the app is deployed
-# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
+# https://symfony.com/doc/current/best_practices.html#use-parameters-for-configuration
 parameters:
 
 services:
@@ -21,11 +21,11 @@ services:
             - '../src/Kernel.php'
 
     _instanceof:
-        App\Shared\Application\Command\CommandHandlerInterface:
+        App\Shared\Command\CommandHandlerInterface:
             tags:
                 - { name: messenger.message_handler, bus: command.bus }
 
-        App\Shared\Application\Query\QueryHandlerInterface:
+        App\Shared\Query\QueryHandlerInterface:
             tags:
                 - { name: messenger.message_handler, bus: query.bus }
 
@@ -34,32 +34,32 @@ services:
                 - { name: messenger.message_handler, bus: event.bus }
 
 
-    App\Shared\Infrastructure\Doctrine\DomainEventSubscriber:
+    App\Shared\Doctrine\DomainEventSubscriber:
         tags: [ { name: 'doctrine.event_subscriber' } ]
         arguments:
             $containerBag: '@service_container'
 
-    App\Shared\Application\EventListener\ExceptionListener:
+    App\Shared\EventListener\ExceptionListener:
         tags:
             - { name: kernel.event_listener, event: kernel.exception }
 
-    App\Users\Infrastructure\Controller\:
-        resource: '../src/Users/Infrastructure/Controller/'
+    App\Users\Controller\:
+        resource: '../src/Users/Controller/'
         tags: [ 'controller.service_arguments' ]
 
-    App\Security\Infrastructure\Controller\:
-        resource: '../src/Security/Infrastructure/Controller/'
+    App\Security\Controller\:
+        resource: '../src/Security/Controller/'
         tags: [ 'controller.service_arguments' ]
 
-    App\Products\Infrastructure\Controller\:
-        resource: '../src/Products/Infrastructure/Controller/'
+    App\Products\Controller\:
+        resource: '../src/Products/Controller/'
         tags: [ 'controller.service_arguments' ]
 
-    App\Orders\Infrastructure\Controller\:
-        resource: '../src/Orders/Infrastructure/Controller/'
+    App\Orders\Controller\:
+        resource: '../src/Orders/Controller/'
         tags: [ 'controller.service_arguments' ]
 
-    App\Security\Infrastructure\Controller\SecurityController:
+    App\Security\Controller\SecurityController:
         arguments:
             $authenticator: '@security.authenticator.form_login.main'
 

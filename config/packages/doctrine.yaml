@@ -13,18 +13,18 @@ doctrine:
         mappings:
             Users:
                 is_bundle: false
-                dir: '%kernel.project_dir%/src/Users/Domain/Entity'
-                prefix: 'App\Users\Domain\Entity'
+                dir: '%kernel.project_dir%/src/Users/Entity'
+                prefix: 'App\Users\Entity'
                 alias: Users
             Products:
                 is_bundle: false
-                dir: '%kernel.project_dir%/src/Products/Domain/Entity'
-                prefix: 'App\Products\Domain\Entity'
+                dir: '%kernel.project_dir%/src/Products/Entity'
+                prefix: 'App\Products\Entity'
                 alias: Products
             Orders:
                 is_bundle: false
-                dir: '%kernel.project_dir%/src/Orders/Domain/Entity'
-                prefix: 'App\Orders\Domain\Entity'
+                dir: '%kernel.project_dir%/src/Orders/Entity'
+                prefix: 'App\Orders\Entity'
                 alias: Orders
 
 when@test:

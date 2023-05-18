@@ -1,23 +1,23 @@
 users:
   resource:
-    path: ../src/Users/Infrastructure/Controller/
-    namespace: App\Users\Infrastructure\Controller\
+    path: ../src/Users/Controller/
+    namespace: App\Users\Controller\
   type: attribute
 
 security:
   resource:
-    path: ../src/Security/Infrastructure/Controller/
-    namespace: App\Security\Infrastructure\Controller\
+    path: ../src/Security/Controller/
+    namespace: App\Security\Controller\
   type: attribute
 
 products:
   resource:
-    path: ../src/Products/Infrastructure/Controller/
-    namespace: App\Products\Infrastructure\Controller\
+    path: ../src/Products/Controller/
+    namespace: App\Products\Controller\
   type: attribute
 
 orders:
   resource:
-    path: ../src/Orders/Infrastructure/Controller/
-    namespace: App\Orders\Infrastructure\Controller\
+    path: ../src/Orders/Controller/
+    namespace: App\Orders\Controller\
   type: attribute
