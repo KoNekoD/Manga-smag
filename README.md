@@ -28,3 +28,7 @@
 ## Entity implementations
 
 * [X] User(Security)
+
+## Full done:
+
+* [X] Cart

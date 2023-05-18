@@ -4,7 +4,7 @@
     "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
     "This file is @generated automatically"
   ],
-  "content-hash": "21c949be135f9c9cdc0087a49f276ad6",
+  "content-hash": "59405d15387b3385b3ed66fc3a7c1462",
   "packages": [
     {
       "name": "doctrine/cache",
@@ -15,16 +15,16 @@
         "reference": "1ca8f21980e770095a31456042471a57bc4c68fb"
       },
       "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/cache/zipball/1ca8f21980e770095a31456042471a57bc4c68fb",
-                "reference": "1ca8f21980e770095a31456042471a57bc4c68fb",
-                "shasum": ""
-            },
-            "require": {
-                "php": "~7.1 || ^8.0"
-            },
-            "conflict": {
-                "doctrine/common": ">2.2,<2.4"
+        "type": "zip",
+        "url": "https://api.github.com/repos/doctrine/cache/zipball/1ca8f21980e770095a31456042471a57bc4c68fb",
+        "reference": "1ca8f21980e770095a31456042471a57bc4c68fb",
+        "shasum": ""
+      },
+      "require": {
+        "php": "~7.1 || ^8.0"
+      },
+      "conflict": {
+        "doctrine/common": ">2.2,<2.4"
             },
             "require-dev": {
                 "cache/integration-tests": "dev-master",
@@ -2191,14 +2191,14 @@
                 "source": "https://github.com/symfony/doctrine-bridge/tree/v6.2.9"
             },
             "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                  "type": "github"
-                },
+              {
+                "url": "https://symfony.com/sponsor",
+                "type": "custom"
+              },
+              {
+                "url": "https://github.com/fabpot",
+                "type": "github"
+              },
               {
                 "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
                 "type": "tidelift"
@@ -2289,16 +2289,16 @@
       "dist": {
         "type": "zip",
         "url": "https://api.github.com/repos/symfony/dotenv/zipball/4481aa45be7a11d2335c1d5b5bbe2f0c6199b105",
-                "reference": "4481aa45be7a11d2335c1d5b5bbe2f0c6199b105",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.1"
-            },
-            "conflict": {
-                "symfony/console": "<5.4",
-                "symfony/process": "<5.4"
-            },
+        "reference": "4481aa45be7a11d2335c1d5b5bbe2f0c6199b105",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=8.1"
+      },
+      "conflict": {
+        "symfony/console": "<5.4",
+        "symfony/process": "<5.4"
+      },
             "require-dev": {
                 "symfony/console": "^5.4|^6.0",
                 "symfony/process": "^5.4|^6.0"
@@ -3102,14 +3102,14 @@
                 "source": "https://github.com/symfony/http-kernel/tree/v6.2.10"
             },
             "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                  "type": "github"
-                },
+              {
+                "url": "https://symfony.com/sponsor",
+                "type": "custom"
+              },
+              {
+                "url": "https://github.com/fabpot",
+                "type": "github"
+              },
               {
                 "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
                 "type": "tidelift"
@@ -3287,16 +3287,16 @@
       "dist": {
         "type": "zip",
         "url": "https://api.github.com/repos/symfony/polyfill-intl-grapheme/zipball/511a08c03c1960e08a883f4cffcacd219b758354",
-                "reference": "511a08c03c1960e08a883f4cffcacd219b758354",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1"
-            },
-            "suggest": {
-                "ext-intl": "For best performance"
-            },
-            "type": "library",
+        "reference": "511a08c03c1960e08a883f4cffcacd219b758354",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=7.1"
+      },
+      "suggest": {
+        "ext-intl": "For best performance"
+      },
+      "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-main": "1.27-dev"
@@ -3845,14 +3845,14 @@
                 "source": "https://github.com/symfony/runtime/tree/v6.2.8"
             },
             "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                  "type": "github"
-                },
+              {
+                "url": "https://symfony.com/sponsor",
+                "type": "custom"
+              },
+              {
+                "url": "https://github.com/fabpot",
+                "type": "github"
+              },
               {
                 "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
                 "type": "tidelift"
@@ -4319,16 +4319,16 @@
       "dist": {
         "type": "zip",
         "url": "https://api.github.com/repos/symfony/service-contracts/zipball/a8c9cedf55f314f3a186041d19537303766df09a",
-                "reference": "a8c9cedf55f314f3a186041d19537303766df09a",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.1",
-                "psr/container": "^2.0"
-            },
-            "conflict": {
-                "ext-psr": "<1.1|>=2"
-            },
+        "reference": "a8c9cedf55f314f3a186041d19537303766df09a",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=8.1",
+        "psr/container": "^2.0"
+      },
+      "conflict": {
+        "ext-psr": "<1.1|>=2"
+      },
             "suggest": {
                 "symfony/service-implementation": ""
             },
@@ -4895,14 +4895,14 @@
                 "source": "https://github.com/symfony/ux-twig-component/tree/v2.8.1"
             },
             "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                  "type": "github"
-                },
+              {
+                "url": "https://symfony.com/sponsor",
+                "type": "custom"
+              },
+              {
+                "url": "https://github.com/fabpot",
+                "type": "github"
+              },
               {
                 "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
                 "type": "tidelift"
@@ -5029,16 +5029,16 @@
       "dist": {
         "type": "zip",
         "url": "https://api.github.com/repos/symfony/var-dumper/zipball/41a750a23412ca76fdbbf5096943b4134272c1ab",
-                "reference": "41a750a23412ca76fdbbf5096943b4134272c1ab",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.1",
-                "symfony/polyfill-mbstring": "~1.0"
-            },
-            "conflict": {
-                "phpunit/phpunit": "<5.4.3",
-                "symfony/console": "<5.4"
+        "reference": "41a750a23412ca76fdbbf5096943b4134272c1ab",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=8.1",
+        "symfony/polyfill-mbstring": "~1.0"
+      },
+      "conflict": {
+        "phpunit/phpunit": "<5.4.3",
+        "symfony/console": "<5.4"
             },
             "require-dev": {
                 "ext-iconv": "*",
@@ -5534,10 +5534,10 @@
                 "source": "https://github.com/symfony/maker-bundle/tree/v1.48.0"
             },
             "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
+              {
+                "url": "https://symfony.com/sponsor",
+                "type": "custom"
+              },
               {
                 "url": "https://github.com/fabpot",
                 "type": "github"

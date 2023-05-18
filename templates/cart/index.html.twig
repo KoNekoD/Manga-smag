@@ -45,7 +45,7 @@
                                             </svg>
                                         </button>
                                     </div>
-                                    <span class="text-center w-1/5 font-semibold text-sm">{{ cartProduct.price }} ₽</span>
+                                    <span class="text-center w-1/5 font-semibold text-sm">{{ cartProduct.itemPrice }} ₽</span>
                                     <span class="text-center w-1/5 font-semibold text-sm">{{ cartProduct.totalPrice }} ₽</span>
                                 </div>
                             </a>
@@ -67,7 +67,7 @@
                                 <span>{{ cart.totalPrice }} ₽</span>
                             </div>
                             <button class="bg-zinc-300 font-semibold hover:bg-zinc-400 py-3 text-sm text-black uppercase w-full rounded">
-                                <a href="/cart/checkout">Оформить заказ</a></button>
+                                <a href="{{ path('app_cart_checkout') }}">Оформить заказ</a></button>
 
                         </div>
                     </div>
