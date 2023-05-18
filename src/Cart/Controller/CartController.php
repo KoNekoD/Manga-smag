@@ -6,7 +6,7 @@ namespace App\Cart\Controller;
 
 use App\Cart\DTO\CartCheckoutDTO;
 use App\Cart\Service\CartService;
-use App\Orders\Entity\Order;
+use App\Products\Entity\Order;
 use App\Shared\Security\UserFetcherInterface;
 use App\Shared\Service\SerializerServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;

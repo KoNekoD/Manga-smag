@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Security\Controller;
 
 use App\Security\DTO\RegistrationDataStructure;
-use App\Shared\Command\CommandBusInterface;
 use App\Shared\Service\SerializerServiceInterface;
 use App\Users\Service\CreateUserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,7 +22,6 @@ class SecurityController extends AbstractController
     public function __construct(
         private readonly SerializerServiceInterface $serializerService,
         private readonly ValidatorInterface         $validator,
-        private readonly CommandBusInterface        $commandBus,
         private readonly FormLoginAuthenticator     $authenticator,
         private readonly CreateUserService          $createUserService,
 

@@ -29,7 +29,7 @@ services:
             tags:
                 - { name: messenger.message_handler, bus: query.bus }
 
-        App\Shared\Domain\Event\EventHandlerInterface:
+        App\Shared\Event\EventHandlerInterface:
             tags:
                 - { name: messenger.message_handler, bus: event.bus }
 
@@ -53,10 +53,6 @@ services:
 
     App\Products\Controller\:
         resource: '../src/Products/Controller/'
-        tags: [ 'controller.service_arguments' ]
-
-    App\Orders\Controller\:
-        resource: '../src/Orders/Controller/'
         tags: [ 'controller.service_arguments' ]
 
     App\Security\Controller\SecurityController:

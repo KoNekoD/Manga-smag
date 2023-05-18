@@ -15,9 +15,3 @@ products:
     path: ../src/Products/Controller/
     namespace: App\Products\Controller\
   type: attribute
-
-orders:
-  resource:
-    path: ../src/Orders/Controller/
-    namespace: App\Orders\Controller\
-  type: attribute

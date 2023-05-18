@@ -1,34 +1,13 @@
-# TODO
+# Подготовка к запуску:
 
-## Create controllers
-* [X] Admin
-* [X] User
-* [X] Security
-* [X] Cart
-* [ ] Site
-* [ ] Product
-* [ ] Catalog
+bin/console doctrine:database:create
+bin/console doctrine:migrations:migrate
+bin/console doctrine:fixtures:load
 
+# Как запустить:
 
-//главная страница:
-'/' => 'site/index',
-//новости:
-'news' => 'site/news',
-//доставка:
-'delivery' => 'site/delivery',
-//гарантия:
-'refund' => 'site/refund',
-// О магазине
-'contacts' => 'site/contact',
-//товар:
-'product/([0-9]+)' => 'product/view/$1',
-//каталог
-'catalog' => 'catalog/index',
+Терминал 1:
+> `symfony serve`
 
-## Entity implementations
-
-* [X] User(Security)
-
-## Full done:
-
-* [X] Cart
+Терминал 2:
+> `npm run dev-server`

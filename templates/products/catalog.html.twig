@@ -1,0 +1,32 @@
+{% extends '../../base.html.twig' %}
+
+{% block body %}
+    <div class=" ml-10  mr-10 mb-10 mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5">
+        {% for product in products %}
+            <div class=" w-52 bg-white drop-shadow-md rounded-lg flex-col justify-between items-center">
+                <a href="/product/{{ product.id }}">
+                    <img class="object-cover rounded-tl-lg rounded-tr-lg" style="height: 300px; width: 210px;"
+                         src="{{ product.image }}">
+                </a>
+                <div class="px-5 py-3 space-y-2 grid grid-rows-3">
+                    <h3 class="text-lg">
+                        {{ product.name }}
+                    </h3>
+                    <p class="space-x-2 grid-flow-row">
+                    <span class="text-2xl font-light">
+                        <b>{{ product.price }}₽</b>
+                    </span>
+                    </p>
+                    {% if is_granted('ROLE_USER') %}
+                        <div class="flex justify-between items-center pb-2">
+                            <a href="#"
+                               class="px-4 py-2  bg-zinc-300 hover:bg-zinc-400 font-sans text-center text-base text-black rounded duration-300 add-to-cart"
+                               data-id="{{ product.id }}">
+                                В корзину</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
