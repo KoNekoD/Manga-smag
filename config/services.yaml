@@ -43,6 +43,10 @@ services:
         tags:
             - { name: kernel.event_listener, event: kernel.exception }
 
+    App\Site\Controller\:
+        resource: '../src/Site/Controller/'
+        tags: [ 'controller.service_arguments' ]
+
     App\Users\Controller\:
         resource: '../src/Users/Controller/'
         tags: [ 'controller.service_arguments' ]

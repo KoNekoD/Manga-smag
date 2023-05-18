@@ -15,3 +15,9 @@ products:
     path: ../src/Products/Controller/
     namespace: App\Products\Controller\
   type: attribute
+
+site:
+  resource:
+    path: ../src/Site/Controller/
+    namespace: App\Site\Controller\
+  type: attribute
