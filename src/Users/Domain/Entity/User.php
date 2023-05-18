@@ -4,12 +4,11 @@ namespace App\Users\Domain\Entity;
 
 use App\Shared\Domain\Security\AuthUserInterface;
 use App\Users\Domain\Service\UserPasswordHasherInterface;
-use App\Users\Infrastructure\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-#[ORM\Entity(repositoryClass: UserRepository::class)]
+#[ORM\Entity]
 #[ORM\Table(name: 'manga_users')]
 class User implements AuthUserInterface
 {
@@ -26,9 +25,9 @@ class User implements AuthUserInterface
 
     public function __construct(
         #[ORM\Column(length: 180)]
-        private ?string          $name = null,
+        private string          $name,
         #[ORM\Column(length: 180, unique: true)]
-        private readonly ?string $email = null,
+        private readonly string $email,
     )
     {
     }
@@ -55,7 +54,7 @@ class User implements AuthUserInterface
      */
     public function getUserIdentifier(): string
     {
-        return (string)$this->email;
+        return $this->email;
     }
 
     /**

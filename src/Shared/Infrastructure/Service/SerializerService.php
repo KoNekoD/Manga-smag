@@ -38,7 +38,7 @@ class SerializerService implements SerializerServiceInterface
      *
      * @phpstan-ignore-next-line
      */
-    public function normalize(mixed $data, string $format = null): string|int|bool|\ArrayObject|array|null|float
+    public function normalize(mixed $data, ?string $format = null): string|int|bool|\ArrayObject|array|float|null
     {
         return $this->serializer->normalize($data, $format);
     }
@@ -46,7 +46,7 @@ class SerializerService implements SerializerServiceInterface
     /**
      * @throws ExceptionInterface
      */
-    public function denormalize(mixed $data, string $type, string $format = null): mixed
+    public function denormalize(mixed $data, string $type, ?string $format = null): mixed
     {
         return $this->serializer->denormalize($data, $type, $format);
     }

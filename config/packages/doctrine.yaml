@@ -16,6 +16,16 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Users/Domain/Entity'
                 prefix: 'App\Users\Domain\Entity'
                 alias: Users
+            Products:
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Products/Domain/Entity'
+                prefix: 'App\Products\Domain\Entity'
+                alias: Products
+            Orders:
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Orders/Domain/Entity'
+                prefix: 'App\Orders\Domain\Entity'
+                alias: Orders
 
 when@test:
     doctrine:

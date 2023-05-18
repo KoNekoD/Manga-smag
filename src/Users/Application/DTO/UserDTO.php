@@ -9,7 +9,7 @@ use App\Users\Domain\Entity\User;
 
 class UserDTO implements \JsonSerializable
 {
-    public function __construct(public readonly string $id, public readonly string $login)
+    public function __construct(public readonly int $id, public readonly string $login)
     {
     }
 
@@ -20,7 +20,7 @@ class UserDTO implements \JsonSerializable
 
     public static function fromAuthUserInterface(AuthUserInterface $authUser): self
     {
-        return new self($authUser->getId(), $authUser->getLogin());
+        return new self($authUser->getId(), $authUser->getEmail());
     }
 
     /** @return array<string> */

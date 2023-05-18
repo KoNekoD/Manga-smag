@@ -51,6 +51,14 @@ services:
         resource: '../src/Security/Infrastructure/Controller/'
         tags: [ 'controller.service_arguments' ]
 
+    App\Products\Infrastructure\Controller\:
+        resource: '../src/Products/Infrastructure/Controller/'
+        tags: [ 'controller.service_arguments' ]
+
+    App\Orders\Infrastructure\Controller\:
+        resource: '../src/Orders/Infrastructure/Controller/'
+        tags: [ 'controller.service_arguments' ]
+
     App\Security\Infrastructure\Controller\SecurityController:
         arguments:
             $authenticator: '@security.authenticator.form_login.main'

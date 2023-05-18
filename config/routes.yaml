@@ -9,3 +9,15 @@ security:
     path: ../src/Security/Infrastructure/Controller/
     namespace: App\Security\Infrastructure\Controller\
   type: attribute
+
+products:
+  resource:
+    path: ../src/Products/Infrastructure/Controller/
+    namespace: App\Products\Infrastructure\Controller\
+  type: attribute
+
+orders:
+  resource:
+    path: ../src/Orders/Infrastructure/Controller/
+    namespace: App\Orders\Infrastructure\Controller\
+  type: attribute

@@ -30,7 +30,7 @@ class CommandBus implements CommandBusInterface
         }
 
         if (count($handledStamps) > 1) {
-            $handlers = implode(', ', array_map(function (HandledStamp $stamp): string {
+            $handlers = implode(', ', array_map(static function (HandledStamp $stamp): string {
                 return sprintf('"%s"', $stamp->getHandlerName());
             }, $handledStamps));
 

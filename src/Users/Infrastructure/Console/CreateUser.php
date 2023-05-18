@@ -31,27 +31,37 @@ final class CreateUser extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        $login = $io->ask(
-            'login',
+        $name = $io->ask(
+            'name',
             null,
-            function (?string $login) {
-                Assert::notEmpty($login, 'Login cannot be empty');
+            static function (?string $name) {
+                Assert::notEmpty($name, 'Name cannot be empty');
 
-                return $login;
+                return $name;
+            }
+        );
+
+        $email = $io->ask(
+            'email',
+            null,
+            static function (?string $email) {
+                Assert::notEmpty($email, 'Email cannot be empty');
+
+                return $email;
             }
         );
 
         $password = $io->askHidden(
             'password',
-            function (?string $password) {
+            static function (?string $password) {
                 Assert::notEmpty($password, 'Password cannot be empty');
 
                 return $password;
             }
         );
 
-        $user = $this->userFactory->create($login, $password);
-        $this->userRepository->add($user);
+        $user = $this->userFactory->create($name, $email, $password);
+        $this->userRepository->save($user, true);
 
         return Command::SUCCESS;
     }

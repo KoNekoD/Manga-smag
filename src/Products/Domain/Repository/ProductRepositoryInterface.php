@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Product\Domain\Repository;
+namespace App\Products\Domain\Repository;
 
-use App\Product\Domain\Entity\Product;
-use App\Product\Domain\Exception\ProductNotFoundException;
+use App\Products\Domain\Entity\Product;
+use App\Products\Domain\Exception\ProductNotFoundException;
 
 interface ProductRepositoryInterface
 {

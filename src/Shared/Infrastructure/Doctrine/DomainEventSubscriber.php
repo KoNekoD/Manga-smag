@@ -73,7 +73,7 @@ final class DomainEventSubscriber implements EventSubscriberInterface
         foreach ($reflect->getProperties() as $property) {
             $type = $property->getType();
 
-            if (is_null($type) || $type->isBuiltin() || $property->isInitialized($entity)) {
+            if ($type === null || $type->isBuiltin() || $property->isInitialized($entity)) {
                 continue;
             }
 

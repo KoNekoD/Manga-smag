@@ -6,7 +6,7 @@ namespace App\Shared\Infrastructure\Security;
 
 use App\Shared\Domain\Security\AuthUserInterface;
 use App\Shared\Domain\Security\UserFetcherInterface;
-use Symfony\Component\Security\Core\Security;
+use Symfony\Bundle\SecurityBundle\Security;
 use Webmozart\Assert\Assert;
 
 class UserFetcher implements UserFetcherInterface

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Cart\Infrastructure\Service;
 
 use App\Cart\Infrastructure\DTO\CartDTO;
-use App\Product\Domain\Repository\ProductRepositoryInterface;
+use App\Products\Domain\Repository\ProductRepositoryInterface;
 use App\Shared\Domain\Service\SerializerServiceInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 

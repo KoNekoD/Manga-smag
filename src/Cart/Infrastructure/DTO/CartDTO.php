@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Cart\Infrastructure\DTO;
 
-use App\Product\Domain\Entity\Product;
+use App\Products\Domain\Entity\Product;
 use JsonSerializable;
 
 class CartDTO implements JsonSerializable
