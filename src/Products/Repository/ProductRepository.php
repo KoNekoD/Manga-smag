@@ -45,8 +45,11 @@ class ProductRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    /** @return Product[] */
-    public function DANGEROUSLYgetAllProducts(): array
+    /**
+     * @return Product[]
+     * @deprecated Потом будет пагинация
+     */
+    public function DANGEROUSLY_getAllProducts(): array
     {
         return $this->createQueryBuilder('p')
             ->orderBy('p.createdAt', 'DESC')

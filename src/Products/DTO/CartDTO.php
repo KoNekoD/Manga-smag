@@ -55,9 +55,9 @@ class CartDTO implements JsonSerializable
     {
         foreach ($this->products as $i => $product) {
             if ($entity->getId() === $product->id) {
-                $this->products[$i]->itemPrice = $product->getPrice();
-                $this->products[$i]->image = $product->getImage();
-                $this->products[$i]->name = $product->getName();
+                $this->products[$i]->itemPrice = $entity->getPrice();
+                $this->products[$i]->image = $entity->getImage();
+                $this->products[$i]->name = $entity->getName();
                 return;
             }
         }

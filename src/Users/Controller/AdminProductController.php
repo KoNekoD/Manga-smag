@@ -2,6 +2,7 @@
 
 namespace App\Users\Controller;
 
+use App\Products\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;

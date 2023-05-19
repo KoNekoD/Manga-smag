@@ -10,7 +10,7 @@ interface SerializerServiceInterface
 
     public function deserialize(mixed $data, string $type, string $format = 'json'): mixed;
 
-    public function normalize(mixed $data, string $format = null): mixed;
+    public function normalize(mixed $data, ?string $format = null): mixed;
 
-    public function denormalize(mixed $data, string $type, string $format = null): mixed;
+    public function denormalize(mixed $data, string $type, ?string $format = null): mixed;
 }

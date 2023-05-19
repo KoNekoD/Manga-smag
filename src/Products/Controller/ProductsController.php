@@ -27,7 +27,7 @@ class ProductsController extends AbstractController
     public function catalog(): Response
     {
         return $this->render('products/catalog.html.twig', [
-            'products' => $this->productRepository->DANGEROUSLYgetAllProducts(),
+            'products' => $this->productRepository->DANGEROUSLY_getAllProducts(),
         ]);
     }
 }
