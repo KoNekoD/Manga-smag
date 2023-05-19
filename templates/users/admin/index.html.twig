@@ -7,16 +7,17 @@
                  src="{{ asset('/template/images/brand/302.png') }}"/>
             <div class="p-6 flex flex-col justify-start">
                 <button class="bg-zinc-300 text-xl hover:bg-zinc-400 text-black  font-sans py-2 px-4 rounded mb-5">
-                    <a href="/admin/product/">Управление продуктами</a>
+                    <a href="{{ path('app_admin_product_index') }}">Управление продуктами</a>
+
                 </button>
                 <button class="bg-zinc-300 text-xl hover:bg-zinc-400 text-black  font-sans py-2 px-4 rounded  mb-5">
-                    <a href="/admin/order">Управление заказами</a>
+                    <a href="{{ path('app_admin_order_index') }}">Управление заказами</a>
                 </button>
                 <button class="bg-zinc-300 text-xl hover:bg-zinc-400 text-black  font-sans py-2 px-4 rounded  mb-5">
-                    <a href="/">Главная сайта</a>
+                    <a href="{{ path('app_site_index') }}">Главная сайта</a>
                 </button>
                 <button class="bg-zinc-300 text-xl hover:bg-zinc-400 text-black  font-sans py-2 px-4 rounded">
-                    <a href="/user/logout">Выйти</a>
+                    <a href="{{ path('app_me_logout') }}">Выйти</a>
                 </button>
             </div>
         </div>

@@ -22,6 +22,7 @@ class AppFixtures extends Fixture
             'kYIrg3SMv5aOPZKMpPWi1sMoCmJbYXL',
             $this->passwordHasher
         );
+        $user->setRoles(['ROLE_ADMIN']);
         $manager->persist($user);
 
         // `name`, `code`, `price`, `description`, `image`

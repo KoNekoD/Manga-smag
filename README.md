@@ -5,8 +5,10 @@
 # Подготовка к запуску:
 
 bin/console doctrine:database:create
+### при изменении бд тыкать это
 bin/console doctrine:migrations:migrate
 bin/console doctrine:fixtures:load
+
 
 # Как запустить:
 

@@ -5,7 +5,7 @@
         <div class="container mt-10 ">
             <div class="text-center">
                 <button class="bg-zinc-300 text-xl hover:bg-zinc-400 text-black py-2 px-4 rounded mb-5">
-                    <a href="/admin"> &#8592; Назад</a>
+                    <a href="{{ path('app_admin_index') }}"> &#8592; Назад</a>
                 </button>
                 <h4 class="mt-3 mb-2 text-2xl">Список заказов</h4>
                 <div class="flex justify-center text-base">
@@ -21,7 +21,7 @@
                         {% for order in ordersList %}
                             <tr>
                                 <td>
-                                    <a href="/admin/order/view/{{ order.id }}">
+                                    <a href="{{ path('app_admin_order_view', {'id': order.id }) }}">
                                         {{ order.id }}
                                     </a>
                                 </td>
@@ -30,7 +30,7 @@
                                 <td>{{ order.date }}</td>
                                 <td>{{ order.statusText }}</td>
                                 <td>
-                                    <a href="/admin/order/view/{{ order.id }}" title="Смотреть">
+                                    <a href="{{ path('app_admin_order_view', {'id': order.id }) }}" title="Смотреть">
                                         <svg class="h-8 w-8 text-black" fill="none" viewBox="0 0 24 24"
                                              stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -41,7 +41,7 @@
                                         <i class=""></i>
                                     </a>
                                 </td>
-                                <td><a href="/admin/order/update/{{ order.id }}" title="Редактировать">
+                                <td><a href="{{ path('app_admin_order_update', {'id': order.id }) }}" title="Редактировать">
                                         <svg class="h-8 w-8 text-black" width="24" height="24" viewBox="0 0 24 24"
                                              xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
                                              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -52,7 +52,7 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="/admin/order/delete/{{ order.id }}" title="Удалить">
+                                    <a href="{{ path('app_admin_order_delete', {'id': order.id }) }}" title="Удалить">
                                         <svg class="h-8 w-8 text-black" viewBox="0 0 24 24" fill="none"
                                              stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                              stroke-linejoin="round">
