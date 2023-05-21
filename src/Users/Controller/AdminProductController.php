@@ -50,6 +50,8 @@ class AdminProductController extends AbstractController
             $this->entityManager->persist($product);
 
             $this->entityManager->flush();
+
+            return $this->redirectToRoute('app_admin_product_index');
         }
 
         $errors = [];
