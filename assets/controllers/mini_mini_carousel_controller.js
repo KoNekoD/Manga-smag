@@ -19,28 +19,28 @@ export default class extends Carousel {
 
             centerSlides: true,
             loop: true,
-            autoplay: {
-                delay: 3000
-            },
+            // autoplay: {
+            //     delay: 3000
+            // },
             // Default parameters
             slidesPerView: 1,
-            spaceBetween: 10,
+            spaceBetween: 5,
             // Responsive breakpoints
             breakpoints: {
                 // when window width is >= 320px
                 320: {
                     slidesPerView: 2,
-                    spaceBetween: 20
+                    spaceBetween: 10
                 },
                 // when window width is >= 480px
                 480: {
                     slidesPerView: 3,
-                    spaceBetween: 30
+                    spaceBetween: 15
                 },
                 // when window width is >= 640px
                 640: {
                     slidesPerView: 4,
-                    spaceBetween: 40
+                    spaceBetween: 20
                 }
             },
             setWrapperSize: true,

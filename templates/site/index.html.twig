@@ -69,84 +69,81 @@
     </div>
 
     <!-- маленький слайдер-->
-    <main class="mt-20 ml-10 mr-10">
-        <div data-controller="carousel" class="swiper-container"
-             data-carousel-options-value='{"direction": "horizontal"}'>
-            <p class="text-left  font-sans text-black text-4xl ml-10 mb-10">Скоро в продаже</p>
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <img class="rounded-lg" src="{{ asset('/template/images/brand/1.webp') }}"/>
-                </div>
-                <div class="swiper-slide">
-                    <img class="rounded-lg" src="{{ asset('/template/images/brand/2.webp') }}"/>
-                </div>
-                <div class="swiper-slide">
-                    <img class="rounded-lg" src="{{ asset('/template/images/brand/3.webp') }}"/>
-                </div>
-                <div class="swiper-slide">
-                    <img class="rounded-lg" src="{{ asset('/template/images/brand/4.webp') }}"/>
-                </div>
-                <div class="swiper-slide">
-                    <img class="rounded-lg" src="{{ asset('/template/images/brand/5.webp') }}"/>
-                </div>
-                <div class="swiper-slide">
-                    <img class="rounded-lg" src="{{ asset('/template/images/brand/6.webp') }}"/>
-                </div>
-                <div class="swiper-slide">
-                    <img class="rounded-lg" src="{{ asset('/template/images/brand/7.webp') }}"/>
-                </div>
-                <div class="swiper-slide">
-                    <img class="rounded-lg" src="{{ asset('/template/images/brand/8.webp') }}"/>
-                </div>
-                <div class="swiper-slide">
-                    <img class="rounded-lg" src="{{ asset('/template/images/brand/9.webp') }}"/>
-                </div>
-                <div class="swiper-slide">
-                    <img class="rounded-lg" src="{{ asset('/template/images/brand/10.webp') }}"/>
-                </div>
-                <div class="swiper-slide">
-                    <img class="rounded-lg" src="{{ asset('/template/images/brand/11.webp') }}"/>
-                </div>
+    <div data-controller="carousel_mini" class="swiper-container"
+         data-carousel-options-value='{"direction": "horizontal"}'>
+        <p class="text-left  font-sans text-black text-4xl ml-10 mb-10">Скоро в продаже</p>
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img class="rounded-lg" src="{{ asset('/template/images/brand/1.webp') }}"/>
+            </div>
+            <div class="swiper-slide">
+                <img class="rounded-lg" src="{{ asset('/template/images/brand/2.webp') }}"/>
+            </div>
+            <div class="swiper-slide">
+                <img class="rounded-lg" src="{{ asset('/template/images/brand/3.webp') }}"/>
+            </div>
+            <div class="swiper-slide">
+                <img class="rounded-lg" src="{{ asset('/template/images/brand/4.webp') }}"/>
+            </div>
+            <div class="swiper-slide">
+                <img class="rounded-lg" src="{{ asset('/template/images/brand/5.webp') }}"/>
+            </div>
+            <div class="swiper-slide">
+                <img class="rounded-lg" src="{{ asset('/template/images/brand/6.webp') }}"/>
+            </div>
+            <div class="swiper-slide">
+                <img class="rounded-lg" src="{{ asset('/template/images/brand/7.webp') }}"/>
+            </div>
+            <div class="swiper-slide">
+                <img class="rounded-lg" src="{{ asset('/template/images/brand/8.webp') }}"/>
+            </div>
+            <div class="swiper-slide">
+                <img class="rounded-lg" src="{{ asset('/template/images/brand/9.webp') }}"/>
+            </div>
+            <div class="swiper-slide">
+                <img class="rounded-lg" src="{{ asset('/template/images/brand/10.webp') }}"/>
+            </div>
+            <div class="swiper-slide">
+                <img class="rounded-lg" src="{{ asset('/template/images/brand/11.webp') }}"/>
             </div>
         </div>
-    </main>
+    </div>
 
-    <main class="mt-10 ml-10 mr-10">
-        <div data-controller="slider">
-            <p class="text-left  font-sans text-black text-4xl ml-10 mb-10">Наши новинки</p>
-            <div class="flex overflow-x-scroll mb-6" data-slider-target="scrollContainer">
-                <div class="" data-slider-target="image" id="1">
-                    <div class="flex items-stretch">
-                        {% for product in latestProducts %}
-                            <div class="w-48 bg-white drop-shadow-md rounded-lg flex-col justify-between items-center ml-2 mr-2 mb-2">
-                                <a href="{{ path('app_product_view', { 'id': product.id }) }}">
-                                    <img class="object-cover rounded-tl-lg rounded-tr-lg"
-                                         style="height: 300px; width: 210px;" src="{{ product.image }}"></a>
-                                <div class="px-5 py-3 space-y-2  grid grid-rows-3">
-                                    <h3 class="text-lg">
-                                        {{ product.name }}
-                                    </h3>
-                                    <p class="space-x-2 grid-flow-row">
+    <div data-controller="carousel_mini_mini" class="swiper-container">
+        <p class="text-left  font-sans text-black text-4xl ml-10 mb-10">Наши новинки</p>
+        <div class="swiper-wrapper">
+            {% for product in latestProducts %}
+                <div class="swiper-slide">
+                    <div class="w-48 bg-white drop-shadow-md rounded-lg ml-2 mr-2 mb-2">
+                        <a href="{{ path('app_product_view', { 'id': product.id }) }}">
+                            <img class="object-cover rounded-tl-lg rounded-tr-lg"
+                                 style="height: 300px; width: 210px;" src="{{ product.image }}"></a>
+                        <div class="px-5 py-3 space-y-2  grid grid-rows-2">
+                            <h3 class="text-lg">
+                                {{ product.name }}
+                            </h3>
+                            <div class="flex flex-col justify-center items-start">
+                                <p class="space-x-2 grid-flow-row">
                                     <span class="text-2xl font-light">
                                         <b>{{ product.price }}₽</b>
                                     </span>
-                                    </p>
-                                    {% if is_granted('ROLE_USER') %}
-                                        <div class="flex justify-between items-center pb-2">
-                                            <a href="#" class="px-4 py-2 bg-zinc-300 hover:bg-zinc-400
+                                </p>
+                                {% if is_granted('ROLE_USER') %}
+                                    <div class="flex justify-between items-center">
+                                        <a href="#" class="px-2 py-1 bg-zinc-300 hover:bg-zinc-400
                 text-center font-sans text-base text-black rounded duration-300 add-to-cart"
-                                               data-id="{{ product.id }}">
-                                                В корзину</a>
-                                        </div>
-                                    {% endif %}
-                                </div>
+                                           data-id="{{ product.id }}">
+                                            В корзину</a>
+                                    </div>
+                                {% endif %}
                             </div>
-                        {% endfor %}
+                        </div>
                     </div>
                 </div>
+            {% endfor %}
             </div>
-        </div>
-    </main>
+
+    </div>
 
     <!--блок о нас-->
     <p class="text-left  font-sans text-black text-4xl ml-10 mb-10">Контакты</p>

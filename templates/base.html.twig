@@ -13,8 +13,8 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body>
-        {% if is_granted('ROLE_ADMIN') %}
+    <body class="overflow-x-hidden">
+    {% if is_granted('ROLE_ADMIN') %}
             {{ include('layouts/header_admin.html.twig') }}
         {% else %}
             {{ include('layouts/header.html.twig') }}
