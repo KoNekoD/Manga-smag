@@ -43,12 +43,16 @@ class AdminProductController extends AbstractController
     #[Route('/admin/product/update/{id}', name: 'app_admin_product_update')]
     public function update(int $id, Request $request): Response
     {
-        /** @var ProductUpdateDTO $dto */
-        $dto = $this->serializerService->denormalize($request->request->all(), ProductRepository::class);
         /** @var Product $product */
         $product = $this->productRepository->find($id);
-        $product->updateInformation($dto);
-        $this->entityManager->flush();
+
+        if ($request->getContent()) {
+            /** @var ProductUpdateDTO $dto */
+            $dto = $this->serializerService->denormalize($request->request->all(), ProductRepository::class);
+            $product->updateInformation($dto);
+            $this->entityManager->flush();
+        }
+
         return $this->render('users/admin_product/update.html.twig', [
             'product' => $product
         ]);
@@ -61,9 +65,4 @@ class AdminProductController extends AbstractController
             'product' => $this->productRepository->find($id)
         ]);
     }
-
-    private function updateInformation(ProductUpdateDTO $dto)
-    {
-    }
-
 }

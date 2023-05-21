@@ -36,14 +36,18 @@ class AdminOrderController extends AbstractController
     #[Route('/admin/order/update/{id}', name: 'app_admin_order_update')]
     public function update(int $id, Request $request): Response
     {
-        /** @var OrderUpdateDTO $dto */
-        $dto = $this->serializerService->denormalize($request->request->all(), OrderUpdateDTO::class);
         /** @var Order $order */
         $order = $this->orderRepository->find($id);
-        $order->updateInformation($dto);
-        $this->entityManager->flush();
+
+        if ($request->getContent()) {
+            /** @var OrderUpdateDTO $dto */
+            $dto = $this->serializerService->denormalize($request->request->all(), OrderUpdateDTO::class);
+            $order->updateInformation($dto);
+            $this->entityManager->flush();
+        }
+
         return $this->render('users/admin_order/update.html.twig', [
-            'order' => $this->orderRepository->find($id)
+            'order' => $order
         ]);
     }
 

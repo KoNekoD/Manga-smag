@@ -9,7 +9,6 @@ bin/console doctrine:database:create
 bin/console doctrine:migrations:migrate
 bin/console doctrine:fixtures:load
 
-
 # Как запустить:
 
 Терминал 1:
@@ -17,3 +16,16 @@ bin/console doctrine:fixtures:load
 
 Терминал 2:
 > `npm run dev-server`
+
+# Описание
+
+SerializerServiceInterface - Сериализация/Де-сериализация данных
+Entity - Сущность, обозначает строку в базе
+Repository - Получение сущности
+Controller - Endpoint(Конечная точка, с неё всё начинается)
+DTO - Хранит ТОЛЬКО данны
+
+# *
+
+Exception - Ошибки, исключения, можно выбросить и отловить и обработать
+Factory - Фабрика, для создания сущностей с доп. логикой при создании
