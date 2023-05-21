@@ -39,7 +39,7 @@ export default class extends Carousel {
                 },
                 // when window width is >= 640px
                 640: {
-                    slidesPerView: 4,
+                    slidesPerView: 6,
                     spaceBetween: 20
                 }
             },
