@@ -15,7 +15,7 @@
                     <h4 class="text-xl font-sans mb-2">Редактировать заказ #{{ order.id }}</h4>
                     <div class="col-lg-4 font-sans">
                         <div class="login-form">
-                            <form action="#" method="post">
+                            <form action="{{ path('app_admin_order_update') }}" method="post">
 
                                 <p class="mb-2 mt-2 font-sans text-base">Имя клиента</p>
                                 <input type="text" name="userName"
@@ -31,10 +31,6 @@
                                 <input type="text" name="userComment"
                                        class="border-2 border-black rounded py-1 px-2" placeholder=""
                                        value="{{ order.userComment }}">
-
-                                <p class="mb-2 mt-2 font-sans text-base">Дата оформления заказа</p>
-                                <input type="text" name="date" class="border-2 border-black rounded py-1 px-2"
-                                       placeholder="" value="{{ order.createdAt }}">
 
                                 <p class="mb-2 mt-2 font-sans text-base">Статус</p>
                                 <select name="status" class="border-2 border-black rounded py-1 px-2">

@@ -2,9 +2,14 @@
 
 namespace App\Users\Controller;
 
+use App\Products\Entity\Order;
 use App\Products\Repository\OrderRepository;
 use App\Products\Repository\ProductRepository;
+use App\Shared\Service\SerializerServiceInterface;
+use App\Users\DTO\OrderUpdateDTO;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -14,6 +19,8 @@ class AdminOrderController extends AbstractController
     public function __construct(
         private readonly OrderRepository   $orderRepository,
         private readonly ProductRepository $productRepository,
+        private readonly SerializerServiceInterface $serializerService,
+        private readonly EntityManagerInterface $entityManager,
     )
     {
     }
@@ -27,16 +34,29 @@ class AdminOrderController extends AbstractController
     }
 
     #[Route('/admin/order/update/{id}', name: 'app_admin_order_update')]
-    public function update(int $id): Response
+    public function update(int $id, Request $request): Response
     {
+        /** @var OrderUpdateDTO $dto */
+        $dto = $this->serializerService->denormalize($request->request->all(), OrderUpdateDTO::class);
+        /** @var Order $order */
+        $order = $this->orderRepository->find($id);
+        $order->updateInformation($dto);
+        $this->entityManager->flush();
         return $this->render('users/admin_order/update.html.twig', [
             'order' => $this->orderRepository->find($id)
         ]);
     }
 
     #[Route('/admin/order/delete/{id}', name: 'app_admin_order_delete')]
-    public function delete(int $id): Response
+    public function delete(int $id, Request $request): Response
     {
+        if ($request->request->get('accept')) {
+            /** @var Order $order */
+            $order = $this->orderRepository->find($id);
+            $this->entityManager->remove($order);
+            $this->entityManager->flush();
+            return $this->redirectToRoute('app_admin_order_index');
+        }
         return $this->render('users/admin_order/delete.html.twig', [
             'order' => $this->orderRepository->find($id)
         ]);
@@ -53,4 +73,5 @@ class AdminOrderController extends AbstractController
             )
         ]);
     }
+
 }

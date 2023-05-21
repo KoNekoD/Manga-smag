@@ -14,9 +14,11 @@
                 <h4 class="text-xl font-sans">Удалить заказ #{{ order.id }}</h4>
                 <p class="text-xl font-sans">Вы действительно хотите удалить этот заказ?</p>
                 <form method="post">
+                    <input type="hidden" name="accept" value="1" />
                     <input type="submit"
                            class="font-sans bg-zinc-300 text-xl hover:bg-zinc-400 text-black py-2 px-4 rounded mt-5"
                            name="submit" value="Удалить"/>
+
                 </form>
             </div>
         </div>

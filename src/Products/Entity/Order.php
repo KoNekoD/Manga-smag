@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Products\Entity;
 
+use App\Users\DTO\OrderUpdateDTO;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -77,5 +78,13 @@ class Order
     public function getProductsIds(): array
     {
         return $this->productsIds;
+    }
+
+    public function updateInformation(OrderUpdateDTO $dto): void
+    {
+        $this->userName = $dto->userName;
+        $this->userPhone = $dto->userPhone;
+        $this->userComment = $dto->userComment;
+        $this->status = $dto->status;
     }
 }

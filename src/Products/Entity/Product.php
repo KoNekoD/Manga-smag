@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Products\Entity;
 
+use App\Users\DTO\ProductUpdateDTO;
 use Carbon\Carbon;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -68,18 +69,13 @@ class Product
         return $this->image;
     }
 
-    public function updateInformation(
-        string  $name,
-        int     $code,
-        float   $price,
-        ?string $description,
-        ?string $image,
-    ): void
+    public function updateInformation(ProductUpdateDTO $dto): void
     {
-        $this->name = $name;
-        $this->code = $code;
-        $this->price = $price;
-        $this->description = $description;
-        $this->image = $image;
+        $this->name = $dto->name;
+        $this->code = $dto->code;
+        $this->price = $dto->price;
+        $this->description = $dto->description;
+        $this->image = $dto->image;
     }
+
 }
