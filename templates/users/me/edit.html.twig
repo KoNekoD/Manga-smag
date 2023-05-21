@@ -13,21 +13,21 @@
                         <p class="text-xl font-sans mb-20 mt-32">Данные отредактированы!</p>
                     {% endif %}
                 {% endif %}
-                    <div class="signup-form">
-                        <h2 class="text-xl font-sans mb-2 mt-10">Редактирование данных</h2>
-                        <form action="#" method="post">
-                            <p class="mb-2 mt-2 font-sans text-base">Имя:</p>
-                            <input type="text" name="name" class="border border-2 border-black rounded py-1 px-2"
-                                   placeholder="Имя" value="{{ user.name }}"/>
-                            <p class="mb-2 mt-2 font-sans text-base">Пароль:</p>
-                            <input type="password" name="password" class="border border-2 border-black rounded py-1 px-2"
-                                   placeholder="Пароль" value="{{ user.password }}"/>
-                            <br/>
-                            <input type="submit" name="submit"
-                                   class="bg-zinc-300 text-xl hover:bg-zinc-400 text-black py-2 px-4 rounded mb-5 mt-5"
-                                   value="Сохранить"/>
-                        </form>
-                    </div>
+                <div class="signup-form">
+                    <h2 class="text-xl font-sans mb-2 mt-10">Редактирование данных</h2>
+                    <form action="{{ path('app_me_edit') }}" method="post">
+                        <p class="mb-2 mt-2 font-sans text-base">Имя:</p>
+                        <input type="text" name="name" class="border-2 border-black rounded py-1 px-2"
+                               placeholder="Имя" value="{{ user.name }}"/>
+                        <p class="mb-2 mt-2 font-sans text-base">Новый пароль:</p>
+                        <input type="password" name="password" class="border-2 border-black rounded py-1 px-2"
+                               placeholder="Пароль" value=""/>
+                        <br/>
+                        <input type="submit" name="submit"
+                               class="bg-zinc-300 text-xl hover:bg-zinc-400 text-black py-2 px-4 rounded mb-5 mt-5"
+                               value="Сохранить"/>
+                    </form>
+                </div>
             </div>
             <img class=" w-full h-96 md:h-auto object-cover md:w-96 rounded-t-lg md:rounded-none md:rounded-l-lg "
                  src="{{ asset('/template/images/brand/00002.png') }}"/>

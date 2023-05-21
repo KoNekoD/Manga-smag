@@ -3,6 +3,7 @@
 namespace App\Users\Entity;
 
 use App\Shared\Security\AuthUserInterface;
+use App\Users\DTO\UserEditDTO;
 use App\Users\Service\UserPasswordHasherInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -98,5 +99,10 @@ class User implements AuthUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function updateInformation(UserEditDTO $dto): void
+    {
+        $this->name = $dto->newName;
     }
 }
