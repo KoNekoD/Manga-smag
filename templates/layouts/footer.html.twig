@@ -39,7 +39,7 @@
                            class="text-black opacity-70 hover:opacity-100 duration-300 text-xl">Каталог</a>
                     </li>
                     <li>
-                        <a href="/index.php/#bottom"
+                        <a href="{{ path('app_site_contact') }}"
                            class="text-black opacity-70 hover:opacity-100 duration-300 text-xl">Контакты </a>
                     </li>
                 </ul>
@@ -47,42 +47,46 @@
             <div class="mb-4">
                 <ul class="list-none mb-0">
                     <li>
-                        <a href="/refund/" class="text-black opacity-70 hover:opacity-100 duration-300 text-xl">Возврат
+                        <a href="{{ path('app_site_refund') }}"
+                           class="text-black opacity-70 hover:opacity-100 duration-300 text-xl">Возврат
                             и гарантия</a>
                     </li>
                     <li>
-                        <a href="/delivery/" class="text-black opacity-70 hover:opacity-100 duration-300 text-xl">Оплата
+                        <a href="{{ path('app_site_delivery') }}"
+                           class="text-black opacity-70 hover:opacity-100 duration-300 text-xl">Оплата
                             и доставка</a>
                 </ul>
             </div>
             <div class="mb-4">
                 <ul class="list-none mb-0">
                     <li>
-                        <?php if (User::isLogged()) : ?>
-                        <div>
-                            <?php if (AdminBase::isAdmin()) : ?>
-                            <a href="{{ path('app_admin_index') }}"
-                               class="text-black opacity-70 hover:opacity-100 duration-300 text-xl">
-                                Админ панель
-                            </a>
-                            <?php endif; ?>
-                        </div>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <div>
+                                <a href="{{ path('app_admin_index') }}"
+                                   class="text-black opacity-70 hover:opacity-100 duration-300 text-xl">
+                                    Админ панель
+                                </a>
+                            </div>
+                        {% endif %}
                     </li>
                     <li>
                         <div>
-                            <a href="/cabinet" class="text-black opacity-70 hover:opacity-100 duration-300 text-xl">
-                                Аккаунт
-                            </a>
-                            <?php else : ?>
-                            <a href="/user/login" class="text-black opacity-70 hover:opacity-100 duration-300 text-xl">
-                                Войти
-                            </a><br>
-                            <a href="/user/register"
-                               class="text-black opacity-70 hover:opacity-100 duration-300 text-xl">
-                                Регистрация
-                            </a>
+                            {% if is_granted('IS_AUTHENTICATED') %}
+                                <a href="{{ path('app_me') }}"
+                                   class="text-black opacity-70 hover:opacity-100 duration-300 text-xl">
+                                    Аккаунт
+                                </a>
+                            {% else %}
+                                <a href="{{ path('app_login') }}"
+                                   class="text-black opacity-70 hover:opacity-100 duration-300 text-xl">
+                                    Войти
+                                </a><br>
+                                <a href="{{ path('app_register') }}"
+                                   class="text-black opacity-70 hover:opacity-100 duration-300 text-xl">
+                                    Регистрация
+                                </a>
+                            {% endif %}
                         </div>
-                        <?php endif; ?>
                     </li>
                 </ul>
             </div>
@@ -90,6 +94,6 @@
     </div>
 
     <div class="text-center p-4 " style="background-color: rgba(0, 0, 0, 0.2);">
-        <a class="text-zinc-900" href="/"><b>WOW.COM</b></a>
+        <a class="text-zinc-900" href="{{ path('app_site_index') }}"><b>WOW.COM</b></a>
     </div>
 </footer>

@@ -41,11 +41,4 @@ class MeController extends AbstractController
             )
         ]);
     }
-
-    #[Route('/me/logout', name: 'app_me_logout')]
-    public function logout(): Response
-    {
-        // controller can be blank: it will never be called!
-        throw new \Exception('Don\'t forget to activate logout in security.yaml');
-    }
 }

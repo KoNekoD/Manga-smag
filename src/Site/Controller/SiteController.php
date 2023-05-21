@@ -47,12 +47,18 @@ class SiteController extends AbstractController
     #[Route('/news', name: 'app_site_news')]
     public function news(): Response
     {
-        return  $this->render('site/news.html.twig');
+        return $this->render('site/news.html.twig');
     }
 
     #[Route('/refund', name: 'app_site_refund')]
     public function refund(): Response
     {
-        return  $this->render('site/refund.html.twig');
+        return $this->render('site/refund.html.twig');
+    }
+
+    #[Route('/bye', name: 'app_site_bye')]
+    public function bye(): Response
+    {
+        throw new \Exception('Implement me pls :3');
     }
 }

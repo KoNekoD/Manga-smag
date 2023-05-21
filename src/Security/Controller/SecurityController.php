@@ -32,6 +32,10 @@ class SecurityController extends AbstractController
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserAuthenticatorInterface $authenticatorManager): Response
     {
+        if ($this->isGranted('ROLE_USER')) {
+            return $this->redirectToRoute('app_me');
+        }
+
         $errors = [];
         if ($request->getContent()) {
             $dto = $this->serializerService->denormalize($request->request->all(), RegistrationDataStructure::class);
@@ -53,6 +57,7 @@ class SecurityController extends AbstractController
                     $request,
                     [new RememberMeBadge()]
                 );
+                return $this->redirectToRoute('app_site_index');
             }
 
         }
@@ -63,6 +68,10 @@ class SecurityController extends AbstractController
     #[Route('/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
+        if ($this->isGranted('ROLE_USER')) {
+            return $this->redirectToRoute('app_me');
+        }
+
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
 
@@ -73,5 +82,12 @@ class SecurityController extends AbstractController
             'last_username' => $lastUsername,
             'error' => $error
         ]);
+    }
+
+    #[Route('/logout', name: 'app_logout')]
+    public function logout(): Response
+    {
+        // controller can be blank: it will never be called!
+        throw new \Exception('Don\'t forget to activate logout in security.yaml');
     }
 }

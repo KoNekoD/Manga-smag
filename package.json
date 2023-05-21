@@ -12,15 +12,19 @@
         "regenerator-runtime": "^0.13.9",
         "tailwindcss": "^3.3.2",
         "webpack": "^5.74.0",
-        "webpack-cli": "^4.10.0",
-        "webpack-notifier": "^1.15.0"
+      "webpack-cli": "^4.10.0",
+      "webpack-notifier": "^1.15.0"
     },
-    "license": "UNLICENSED",
-    "private": true,
-    "scripts": {
-        "dev-server": "encore dev-server",
-        "dev": "encore dev",
-        "watch": "encore dev --watch",
-        "build": "encore production --progress"
-    }
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "dev-server": "encore dev-server",
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production --progress"
+  },
+  "dependencies": {
+    "stimulus-carousel": "^5.0.1",
+    "tailwindcss-stimulus-components": "^3.0.4"
+  }
 }

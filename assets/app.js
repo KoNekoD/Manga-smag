@@ -10,3 +10,6 @@ import './styles/app.css';
 
 // start the Stimulus application
 import './bootstrap';
+
+// https://www.stimulus-components.com/docs/stimulus-carousel/
+import 'swiper/css/bundle';
