@@ -54,15 +54,15 @@ class AdminOrderController extends AbstractController
     #[Route('/admin/order/delete/{id}', name: 'app_admin_order_delete')]
     public function delete(int $id, Request $request): Response
     {
+        /** @var Order $order */
+        $order = $this->orderRepository->find($id);
         if ($request->request->get('accept')) {
-            /** @var Order $order */
-            $order = $this->orderRepository->find($id);
             $this->entityManager->remove($order);
             $this->entityManager->flush();
             return $this->redirectToRoute('app_admin_order_index');
         }
         return $this->render('users/admin_order/delete.html.twig', [
-            'order' => $this->orderRepository->find($id)
+            'order' => $order
         ]);
     }
 

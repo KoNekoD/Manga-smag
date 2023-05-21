@@ -5,6 +5,7 @@ namespace App\Users\Controller;
 use App\Products\Entity\Product;
 use App\Products\Repository\ProductRepository;
 use App\Shared\Service\SerializerServiceInterface;
+use App\Users\DTO\ProductCreateDTO;
 use App\Users\DTO\ProductUpdateDTO;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,9 +17,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminProductController extends AbstractController
 {
     public function __construct(
-        private readonly ProductRepository $productRepository,
+        private readonly ProductRepository          $productRepository,
         private readonly SerializerServiceInterface $serializerService,
-        private readonly EntityManagerInterface $entityManager,
+        private readonly EntityManagerInterface     $entityManager,
     )
     {
     }
@@ -32,8 +33,25 @@ class AdminProductController extends AbstractController
     }
 
     #[Route('/admin/product/create', name: 'app_admin_product_create')]
-    public function create(): Response
+    public function create(Request $request): Response
     {
+        if ($request->getContent()) {
+            /** @var ProductUpdateDTO $dto */
+            $dto = $this->serializerService->denormalize($request->request->all(), ProductCreateDTO::class);
+
+            // Can be moved to factory:
+            $product = new Product(
+                $dto->name,
+                $dto->code,
+                $dto->price,
+                $dto->description,
+                $dto->image
+            );
+            $this->entityManager->persist($product);
+
+            $this->entityManager->flush();
+        }
+
         $errors = [];
         return $this->render('users/admin_product/create.html.twig', [
             'errors' => $errors
@@ -48,7 +66,7 @@ class AdminProductController extends AbstractController
 
         if ($request->getContent()) {
             /** @var ProductUpdateDTO $dto */
-            $dto = $this->serializerService->denormalize($request->request->all(), ProductRepository::class);
+            $dto = $this->serializerService->denormalize($request->request->all(), ProductUpdateDTO::class);
             $product->updateInformation($dto);
             $this->entityManager->flush();
         }
@@ -59,10 +77,18 @@ class AdminProductController extends AbstractController
     }
 
     #[Route('/admin/product/delete/{id}', name: 'app_admin_product_delete')]
-    public function delete(int $id): Response
+    public function delete(int $id, Request $request): Response
     {
+        /** @var Product $product */
+        $product = $this->productRepository->find($id);
+        if ($request->request->get('accept')) {
+            $this->entityManager->remove($product);
+            $this->entityManager->flush();
+            return $this->redirectToRoute('app_admin_product_index');
+        }
+
         return $this->render('users/admin_product/delete.html.twig', [
-            'product' => $this->productRepository->find($id)
+            'product' => $product
         ]);
     }
 }

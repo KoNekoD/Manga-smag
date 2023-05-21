@@ -19,6 +19,10 @@ bin/console doctrine:fixtures:load
 
 # Описание
 
+entityManager->persist - Подготавливает объект для сохранения в базу через entityManager->flush в базу.
+Если он был получен из репозитория, то entityManager->persist НЕ НУЖЕН
+entityManager->flush - Сохраняет все изменения и подготовленные объекты
+
 SerializerServiceInterface - Сериализация/Де-сериализация данных
 Entity - Сущность, обозначает строку в базе
 Repository - Получение сущности
