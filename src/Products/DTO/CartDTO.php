@@ -9,14 +9,18 @@ use JsonSerializable;
 
 class CartDTO implements JsonSerializable
 {
+    /**
+     * @param CartProductDTO[] $products
+     */
     public function __construct(
-        /** @var CartProductDTO[] $products */
         public array $products = [],
     )
     {
     }
 
-    /** @return int[] */
+    /**
+     * @return int[]
+     */
     public function getProductsIds(): array
     {
         $result = [];
@@ -63,22 +67,16 @@ class CartDTO implements JsonSerializable
         }
     }
 
-    public function addProduct(int $id, string $name, float $price, string $image): void
+    public function addProduct(CartProductDTO $dto): void
     {
         foreach ($this->products as $i => $product) {
-            if ($product->id === $id) {
+            if ($product->id === $dto->id) {
                 $this->products[$i]->count++;
                 return;
             }
         }
 
-        $this->products[] = new CartProductDTO(
-            $id,
-            1,
-            $price,
-            $image,
-            $name
-        );
+        $this->products[] = $dto;
     }
 
     public function removeProduct(int $id, string $name, float $price, string $image): void

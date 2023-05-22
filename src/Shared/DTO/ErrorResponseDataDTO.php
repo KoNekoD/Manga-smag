@@ -2,7 +2,9 @@
 
 namespace App\Shared\DTO;
 
-class ErrorResponseDataDTO implements \JsonSerializable
+use JsonSerializable;
+
+class ErrorResponseDataDTO implements JsonSerializable
 {
     public function __construct(public readonly int $code, public readonly string $reason)
     {

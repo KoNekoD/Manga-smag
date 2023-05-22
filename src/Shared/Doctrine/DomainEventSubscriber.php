@@ -11,6 +11,7 @@ use Doctrine\Bundle\DoctrineBundle\EventSubscriber\EventSubscriberInterface;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PostFlushEventArgs;
 use Doctrine\ORM\Events;
+use ReflectionClass;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 final class DomainEventSubscriber implements EventSubscriberInterface
@@ -45,6 +46,17 @@ final class DomainEventSubscriber implements EventSubscriberInterface
         $this->keepAggregateRoots($args);
     }
 
+    private function keepAggregateRoots(LifecycleEventArgs $args): void
+    {
+        $entity = $args->getObject();
+
+        if (!($entity instanceof Aggregate)) {
+            return;
+        }
+
+        $this->entities[] = $entity;
+    }
+
     public function postUpdate(LifecycleEventArgs $args): void
     {
         $this->keepAggregateRoots($args);
@@ -68,7 +80,7 @@ final class DomainEventSubscriber implements EventSubscriberInterface
     {
         $entity = $args->getObject();
 
-        $reflect = new \ReflectionClass($entity);
+        $reflect = new ReflectionClass($entity);
 
         foreach ($reflect->getProperties() as $property) {
             $type = $property->getType();
@@ -83,16 +95,5 @@ final class DomainEventSubscriber implements EventSubscriberInterface
                 $property->setValue($entity, $this->container->get($property->getType()->getName()));
             }
         }
-    }
-
-    private function keepAggregateRoots(LifecycleEventArgs $args): void
-    {
-        $entity = $args->getObject();
-
-        if (!($entity instanceof Aggregate)) {
-            return;
-        }
-
-        $this->entities[] = $entity;
     }
 }

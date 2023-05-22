@@ -9,9 +9,11 @@ use App\Users\DTO\ProductCreateDTO;
 use App\Users\DTO\ProductUpdateDTO;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[Route('/users')]
 class AdminProductController extends AbstractController
@@ -20,6 +22,7 @@ class AdminProductController extends AbstractController
         private readonly ProductRepository          $productRepository,
         private readonly SerializerServiceInterface $serializerService,
         private readonly EntityManagerInterface     $entityManager,
+        private readonly SluggerInterface           $slugger
     )
     {
     }
@@ -35,18 +38,39 @@ class AdminProductController extends AbstractController
     #[Route('/admin/product/create', name: 'app_admin_product_create')]
     public function create(Request $request): Response
     {
-        if ($request->getContent()) {
+        if ($request->request->get('submit')) {
             /** @var ProductUpdateDTO $dto */
             $dto = $this->serializerService->denormalize($request->request->all(), ProductCreateDTO::class);
 
             // Can be moved to factory:
             $product = new Product(
                 $dto->name,
-                $dto->code,
-                $dto->price,
+                (int)$dto->code,
+                (float)$dto->price,
                 $dto->description,
-                $dto->image
             );
+
+            $imageFile = $request->files->get('image');
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $this->slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
+
+                try {
+                    $imageFile->move(
+                        $this->getParameter('product_images_directory_full_path'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    throw $e;
+                }
+
+                $product->setImage(
+                    $this->getParameter('product_images_directory_path') . $newFilename
+                );
+            }
+
             $this->entityManager->persist($product);
 
             $this->entityManager->flush();
@@ -66,11 +90,33 @@ class AdminProductController extends AbstractController
         /** @var Product $product */
         $product = $this->productRepository->find($id);
 
-        if ($request->getContent()) {
+        if ($request->request->get('submit')) {
             /** @var ProductUpdateDTO $dto */
             $dto = $this->serializerService->denormalize($request->request->all(), ProductUpdateDTO::class);
             $product->updateInformation($dto);
+
+            $imageFile = $request->files->get('image');
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $this->slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
+
+                try {
+                    $imageFile->move(
+                        $this->getParameter('product_images_directory_full_path'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    throw $e;
+                }
+
+                $product->setImage(
+                    $this->getParameter('product_images_directory_path') . $newFilename
+                );
+            }
             $this->entityManager->flush();
+            return $this->redirectToRoute('app_admin_product_index');
         }
 
         return $this->render('users/admin_product/update.html.twig', [

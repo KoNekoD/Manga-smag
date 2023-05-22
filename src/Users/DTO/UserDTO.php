@@ -6,8 +6,9 @@ namespace App\Users\DTO;
 
 use App\Shared\Security\AuthUserInterface;
 use App\Users\Entity\User;
+use JsonSerializable;
 
-class UserDTO implements \JsonSerializable
+class UserDTO implements JsonSerializable
 {
     public function __construct(public readonly int $id, public readonly string $login)
     {

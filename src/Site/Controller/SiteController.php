@@ -4,6 +4,7 @@ namespace App\Site\Controller;
 
 
 use App\Products\Repository\ProductRepository;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -41,7 +42,7 @@ class SiteController extends AbstractController
     #[Route('/delivery', name: 'app_site_delivery')]
     public function delivery(): Response
     {
-        return  $this->render('site/delivery.html.twig');
+        return $this->render('site/delivery.html.twig');
     }
 
     #[Route('/news', name: 'app_site_news')]
@@ -59,6 +60,6 @@ class SiteController extends AbstractController
     #[Route('/bye', name: 'app_site_bye')]
     public function bye(): Response
     {
-        throw new \Exception('Implement me pls :3');
+        throw new Exception('Implement me pls :3');
     }
 }

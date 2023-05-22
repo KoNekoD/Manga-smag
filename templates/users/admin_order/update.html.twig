@@ -15,9 +15,9 @@
                     <h4 class="text-xl font-sans mb-2">Редактировать заказ #{{ order.id }}</h4>
                     <div class="col-lg-4 font-sans">
                         <div class="login-form">
-                            <form action="{{ path('app_admin_order_update') }}" method="post">
+                            <form action="{{ path('app_admin_order_update', { 'id': order.id }) }}" method="post">
 
-                                <p class="mb-2 mt-2 font-sans text-base">Имя клиента</p>
+                                <p class="mb-2 mt-2 font-sans text-base">Клиент</p>
                                 <input type="text" name="userName"
                                        class="border-2 border-black rounded py-1 px-2" placeholder=""
                                        value="{{ order.username }}">
@@ -35,19 +35,19 @@
                                 <p class="mb-2 mt-2 font-sans text-base">Статус</p>
                                 <select name="status" class="border-2 border-black rounded py-1 px-2">
                                     <option value="1"
-                                            {% if order.status is 1 %} selected="selected"{% endif %}
+                                            {% if order.status is same as '1' %} selected="selected"{% endif %}
                                     >Новый заказ
                                     </option>
                                     <option value="2"
-                                            {% if order.status is 2 %} selected="selected"{% endif %}
+                                            {% if order.status is same as '2' %} selected="selected"{% endif %}
                                     >В обработке
                                     </option>
                                     <option value="3"
-                                            {% if order.status is 3 %} selected="selected"{% endif %}
+                                            {% if order.status is same as '3' %} selected="selected"{% endif %}
                                     >Доставляется
                                     </option>
                                     <option value="4"
-                                            {% if order.status is 4 %} selected="selected"{% endif %}
+                                            {% if order.status is same as '4' %} selected="selected"{% endif %}
                                     >Закрыт
                                     </option>
                                 </select>

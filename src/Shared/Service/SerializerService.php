@@ -4,22 +4,14 @@ declare(strict_types=1);
 
 namespace App\Shared\Service;
 
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use ArrayObject;
 use Symfony\Component\Serializer\Exception\ExceptionInterface;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
-use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class SerializerService implements SerializerServiceInterface
 {
-    private Serializer $serializer;
-
-    public function __construct()
+    public function __construct(private readonly SerializerInterface $serializer)
     {
-        $encoders = [new JsonEncoder()];
-        $normalizers = [new ObjectNormalizer(), new PropertyNormalizer()];
-
-        $this->serializer = new Serializer($normalizers, $encoders);
     }
 
     public function serialize(mixed $data, string $format = 'json'): string
@@ -37,7 +29,7 @@ class SerializerService implements SerializerServiceInterface
      *
      * @phpstan-ignore-next-line
      */
-    public function normalize(mixed $data, ?string $format = null): string|int|bool|\ArrayObject|array|float|null
+    public function normalize(mixed $data, ?string $format = null): string|int|bool|ArrayObject|array|float|null
     {
         return $this->serializer->normalize($data, $format);
     }

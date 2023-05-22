@@ -6,6 +6,7 @@ namespace App\Products\Entity;
 
 use App\Users\DTO\ProductUpdateDTO;
 use Carbon\Carbon;
+use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
@@ -20,8 +21,7 @@ class Product
     private ?int $id = null;
 
     #[ORM\Column(type: 'datetime_immutable')]
-    private \DateTimeImmutable $createdAt;
-
+    private DateTimeImmutable $createdAt;
 
     public function __construct(
         #[ORM\Column(length: 180)]
@@ -72,10 +72,18 @@ class Product
     public function updateInformation(ProductUpdateDTO $dto): void
     {
         $this->name = $dto->name;
-        $this->code = $dto->code;
-        $this->price = $dto->price;
+        $this->code = (int)$dto->code;
+        $this->price = (float)$dto->price;
         $this->description = $dto->description;
-        $this->image = $dto->image;
     }
 
+    public function setImage(string $newFilename): void
+    {
+        $this->image = $newFilename;
+    }
+
+    public function getCreatedAt(): DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
 }

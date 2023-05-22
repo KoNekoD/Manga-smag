@@ -6,9 +6,8 @@ class ProductUpdateDTO
 {
     public function __construct(
         public readonly string $name,
-        public readonly int $code,
-        public readonly float $price,
-        public readonly string $image,
+        public readonly string $code,
+        public readonly string $price,
         public readonly string $description,
     )
     {

@@ -18,18 +18,38 @@
                     {% endif %}
                     <div class="col-lg-4">
                         <div class="login-form">
-                            <form action="#" method="post" enctype="multipart/form-data">
-                                <p class="mb-2 mt-2 font-sans text-base">Название товара</p>
-                                <input type="text" name="name" class="border border-2 border-black rounded py-1 px-2" value="">
-                                <p class="mb-2 mt-2 font-sans text-base">Артикул</p>
-                                <input type="text" name="code" class="border border-2 border-black rounded py-1 px-2" value="">
-                                <p class="mb-2 mt-2 font-sans text-base">Стоимость, ₽</p>
-                                <input type="text" name="price" class="border border-2 border-black rounded py-1 px-2" value="">
-                                <p class="mb-2 mt-2 font-sans text-base">Изображение товара</p>
-                                <input type="file" name="image" class="border border-2 border-black rounded py-1 px-2" value=""><br>
-                                <p class="mb-2 mt-2 font-sans text-base">Сюжет</p>
-                                <textarea name="description" class="border border-2 border-black rounded py-1 px-2"></textarea><br>
-                                <input type="submit" name="submit" class="bg-zinc-300 text-xl hover:bg-zinc-400 text-black py-2 px-4 rounded mb-5" value="Сохранить">
+                            <form action="{{ path('app_admin_product_create') }}" method="post"
+                                  enctype="multipart/form-data" class="flex flex-col">
+                                <label class="mb-2 mt-2 font-sans text-base" for="name">Название товара</label>
+                                <input type="text" name="name" id="name"
+                                       class="border-2 border-black rounded py-1 px-2"
+                                       value="">
+
+                                <label for="code" class="mb-2 mt-2 font-sans text-base">Артикул</label>
+                                <input type="text" name="code" id="code"
+                                       class="border-2 border-black rounded py-1 px-2"
+                                       value="">
+
+                                <label for="price" class="mb-2 mt-2 font-sans text-base">Стоимость, ₽</label>
+                                <input type="text" name="price" id="price"
+                                       class="border-2 border-black rounded py-1 px-2" value="">
+
+                                <label for="image" class="mb-2 mt-2 font-sans text-base">Изображение товара</label>
+                                <input type="file" name="image" id="image"
+                                       class="border-2 border-black rounded py-1 px-2" value=""><br>
+
+                                <label for="description" class="mb-2 mt-2 font-sans text-base">Сюжет</label>
+                                <textarea name="description"
+                                          id="description"
+                                          rows="20"
+                                          cols="40"
+                                          class="border-2 border-black rounded py-1 px-2"></textarea>
+                                <br>
+
+                                <input type="submit"
+                                       name="submit"
+                                       class="bg-zinc-300 text-xl hover:bg-zinc-400 text-black py-2 px-4 rounded mb-5"
+                                       value="Сохранить">
                             </form>
                         </div>
                     </div>

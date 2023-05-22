@@ -20,7 +20,7 @@
                                 <td>{{ order.id }}</td>
                             </tr>
                             <tr>
-                                <td class="border-2 border-black px-4 py-2">Имя клиента</td>
+                                <td class="border-2 border-black px-4 py-2">Клиент</td>
                                 <td>{{ order.userName }}</td>
                             </tr>
                             <tr>
@@ -31,7 +31,7 @@
                                 <td class="border-2 border-black px-4 py-2">Комментарий клиента</td>
                                 <td>{{ order.userComment }}</td>
                             </tr>
-                            {% if order.userId is not 0 %}
+                            {% if order.userId %}
                             <tr>
                                 <td class="border-2 border-black px-4 py-2">ID клиента</td>
                                 <td>{{ order.userId }}</td>
@@ -43,7 +43,7 @@
                             </tr>
                             <tr>
                                 <td class="border-2 border-black px-4 py-2">Дата заказа</td>
-                                <td>{{ order.createdAt }}</td>
+                                <td>{{ order.createdAt.format('d/m/Y - H:i:s') }}</td>
                             </tr>
                         </table>
                     </div>
@@ -58,13 +58,13 @@
                                 <th class="border-2 border-black px-4 py-2">Количество</th>
                             </tr>
                             {% for orderProduct in orderProducts %}
-                            <tr>
-                                <td>{{ orderProduct.id }}</td>
-                                <td>{{ orderProduct.code }}</td>
-                                <td>{{ orderProduct.name }}</td>
-                                <td>${{ orderProduct.price }}</td>
-                                <td>{{ orderProduct.count }}</td>
-                            </tr>
+                                <tr>
+                                    <td>{{ orderProduct.product.id }}</td>
+                                    <td>{{ orderProduct.product.code }}</td>
+                                    <td>{{ orderProduct.product.name }}</td>
+                                    <td>${{ orderProduct.product.price }}</td>
+                                    <td>{{ orderProduct.count }}</td>
+                                </tr>
                             {% endfor %}
                         </table>
                     </div>

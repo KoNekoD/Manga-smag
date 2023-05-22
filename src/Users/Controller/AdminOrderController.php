@@ -17,10 +17,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminOrderController extends AbstractController
 {
     public function __construct(
-        private readonly OrderRepository   $orderRepository,
-        private readonly ProductRepository $productRepository,
+        private readonly OrderRepository            $orderRepository,
+        private readonly ProductRepository          $productRepository,
         private readonly SerializerServiceInterface $serializerService,
-        private readonly EntityManagerInterface $entityManager,
+        private readonly EntityManagerInterface     $entityManager,
     )
     {
     }
@@ -44,6 +44,7 @@ class AdminOrderController extends AbstractController
             $dto = $this->serializerService->denormalize($request->request->all(), OrderUpdateDTO::class);
             $order->updateInformation($dto);
             $this->entityManager->flush();
+            return $this->redirectToRoute('app_admin_order_index');
         }
 
         return $this->render('users/admin_order/update.html.twig', [
@@ -72,9 +73,7 @@ class AdminOrderController extends AbstractController
         $order = $this->orderRepository->find($id);
         return $this->render('users/admin_order/view.html.twig', [
             'order' => $order,
-            'orderProducts' => $this->productRepository->findByIds(
-                $order->getProductsIds()
-            )
+            'orderProducts' => $order->getElements()
         ]);
     }
 

@@ -14,17 +14,9 @@
         {% endblock %}
     </head>
     <body class="overflow-x-hidden">
-    {% if is_granted('ROLE_ADMIN') %}
-            {{ include('layouts/header_admin.html.twig') }}
-        {% else %}
-            {{ include('layouts/header.html.twig') }}
-        {% endif %}
+        {{ include('layouts/header.html.twig') }}
         {% block body %}{% endblock %}
-        {% if is_granted('ROLE_ADMIN') %}
-            {{ include('layouts/footer_admin.html.twig') }}
-        {% else %}
-            {{ include('layouts/footer.html.twig') }}
-        {% endif %}
+        {{ include('layouts/footer.html.twig') }}
         <script>
             const toggler = document.getElementById("toggler");
             const mNav = document.getElementById("mobile__nav");
@@ -49,7 +41,7 @@
             $(document).ready(function () {
                 $(".add-to-cart").click(function () {
                     var id = $(this).attr("data-id");
-                    $.post("/cart/addAjax/" + id, {}, function (data) {
+                    $.post("/cart/add/ajax/" + id, {}, function (data) {
                         $("#cart-count").html(data);
                     });
                     return false;

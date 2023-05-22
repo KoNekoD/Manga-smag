@@ -6,6 +6,9 @@ namespace App\Products\Controller;
 
 use App\Products\DTO\CartCheckoutDTO;
 use App\Products\Entity\Order;
+use App\Products\Entity\OrderProduct;
+use App\Products\Entity\Product;
+use App\Products\Repository\ProductRepository;
 use App\Products\Service\CartService;
 use App\Shared\Security\UserFetcherInterface;
 use App\Shared\Service\SerializerServiceInterface;
@@ -23,7 +26,8 @@ class CartController extends AbstractController
         private readonly UserFetcherInterface       $userFetcher,
         private readonly SerializerServiceInterface $serializerService,
         private readonly ValidatorInterface         $validator,
-        private readonly EntityManagerInterface     $entityManager
+        private readonly EntityManagerInterface     $entityManager,
+        private readonly ProductRepository          $productRepository
     )
     {
     }
@@ -67,8 +71,14 @@ class CartController extends AbstractController
                     $checkoutDTO->userPhone,
                     $checkoutDTO->userComment,
                     $user?->getId(),
-                    $cart->getProductsIds()
                 );
+                foreach ($cart->products as $cartProductDTO) {
+                    /** @var Product $cartProduct */
+                    $cartProduct = $this->productRepository->find($cartProductDTO->id);
+                    $orderProduct = new OrderProduct($order, $cartProduct, $cartProductDTO->count);
+                    $this->entityManager->persist($orderProduct);
+                    $order->addElement($orderProduct);
+                }
 
                 $this->entityManager->persist($order);
                 $this->entityManager->flush();

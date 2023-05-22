@@ -6,6 +6,7 @@ namespace App\Shared\Security;
 
 use Symfony\Bundle\SecurityBundle\Security;
 use Webmozart\Assert\Assert;
+use function get_class;
 
 class UserFetcher implements UserFetcherInterface
 {
@@ -20,7 +21,7 @@ class UserFetcher implements UserFetcherInterface
 
 
         Assert::notNull($user);
-        Assert::isInstanceOf($user, AuthUserInterface::class, sprintf('Invalid user type %s', \get_class($user)));
+        Assert::isInstanceOf($user, AuthUserInterface::class, sprintf('Invalid user type %s', get_class($user)));
 
         return $user;
     }

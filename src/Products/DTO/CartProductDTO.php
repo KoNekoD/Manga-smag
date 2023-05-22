@@ -9,11 +9,11 @@ use JsonSerializable;
 class CartProductDTO implements JsonSerializable
 {
     public function __construct(
-        public int    $id,
-        public int    $count,
-        public float  $itemPrice,
-        public string $image,
-        public string $name,
+        public int     $id,
+        public int     $count,
+        public float   $itemPrice,
+        public ?string $image,
+        public string  $name,
     )
     {
     }
@@ -28,7 +28,9 @@ class CartProductDTO implements JsonSerializable
         return [
             'id' => $this->id,
             'count' => $this->count,
-            'itemPrice' => $this->itemPrice
+            'itemPrice' => $this->itemPrice,
+            'image' => $this->image,
+            'name' => $this->name
         ];
     }
 }

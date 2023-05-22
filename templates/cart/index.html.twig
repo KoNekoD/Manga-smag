@@ -45,8 +45,10 @@
                                             </svg>
                                         </button>
                                     </div>
-                                    <span class="text-center w-1/5 font-semibold text-sm">{{ cartProduct.itemPrice }} ₽</span>
-                                    <span class="text-center w-1/5 font-semibold text-sm">{{ cartProduct.totalPrice }} ₽</span>
+                                    <span id="price-product-{{ cartProduct.id }}"
+                                          class="text-center w-1/5 font-semibold text-sm">{{ cartProduct.itemPrice }} ₽</span>
+                                    <span id="total-product-{{ cartProduct.id }}"
+                                          class="text-center w-1/5 font-semibold text-sm">{{ cartProduct.totalPrice }} ₽</span>
                                 </div>
                             </a>
                         {% endfor %}

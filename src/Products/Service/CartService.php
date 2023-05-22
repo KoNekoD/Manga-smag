@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace App\Products\Service;
 
 use App\Products\DTO\CartDTO;
+use App\Products\DTO\CartProductDTO;
 use App\Products\Repository\ProductRepository;
 use App\Shared\Service\SerializerServiceInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class CartService
 {
@@ -28,16 +30,7 @@ class CartService
     public function getCartAndRefreshData(): CartDTO
     {
         $session = $this->requestStack->getSession();
-
-        if (null === $session->get('cart')) {
-            $storedCart = new CartDTO();
-            $session->set('cart', $this->serializerService->serialize($storedCart));
-        } else {
-            $storedCart = $this->serializerService->deserialize(
-                $session->get('cart'),
-                CartDTO::class
-            );
-        }
+        $storedCart = $this->createOrGetSessionCart($session);
 
         if (!empty($storedCart->products)) {
             $ids = $storedCart->getProductsIds();
@@ -56,23 +49,36 @@ class CartService
         return $storedCart;
     }
 
+    private function createOrGetSessionCart(SessionInterface $session): CartDTO
+    {
+        if (null === $session->get('cart')) {
+            $storedCart = new CartDTO();
+            $session->set('cart', $this->serializerService->serialize($storedCart));
+        } else {
+            $storedCart = $this->serializerService->deserialize(
+                $session->get('cart'),
+                CartDTO::class
+            );
+        }
+
+        return $storedCart;
+    }
+
     public function addOneProduct(int $id): void
     {
         $session = $this->requestStack->getSession();
-
-        /** @var CartDTO $storedCart */
-        $storedCart = $this->serializerService->deserialize(
-            $session->get('cart'),
-            CartDTO::class
-        );
+        $storedCart = $this->createOrGetSessionCart($session);
 
         $product = $this->productRepository->findById($id);
 
         $storedCart->addProduct(
-            $id,
-            $product->getName(),
-            $product->getPrice(),
-            $product->getImage()
+            new CartProductDTO(
+                $id,
+                1,
+                $product->getPrice(),
+                $product->getImage(),
+                $product->getName(),
+            )
         );
         $session->set('cart', $this->serializerService->serialize($storedCart));
     }
@@ -80,12 +86,7 @@ class CartService
     public function removeOneProduct(int $id): void
     {
         $session = $this->requestStack->getSession();
-
-        /** @var CartDTO $storedCart */
-        $storedCart = $this->serializerService->deserialize(
-            $session->get('cart'),
-            CartDTO::class
-        );
+        $storedCart = $this->createOrGetSessionCart($session);
 
         $product = $this->productRepository->findById($id);
 

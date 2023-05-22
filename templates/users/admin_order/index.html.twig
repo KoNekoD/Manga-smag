@@ -27,7 +27,7 @@
                                 </td>
                                 <td>{{ order.username }}</td>
                                 <td>{{ order.userPhone }}</td>
-                                <td>{{ order.date }}</td>
+                                <td>{{ order.createdAt.format('d/m/Y - H:i') }}</td>
                                 <td>{{ order.statusText }}</td>
                                 <td>
                                     <a href="{{ path('app_admin_order_view', {'id': order.id }) }}" title="Смотреть">

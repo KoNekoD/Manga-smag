@@ -7,6 +7,7 @@ namespace App\Security\Controller;
 use App\Security\DTO\RegistrationDataStructure;
 use App\Shared\Service\SerializerServiceInterface;
 use App\Users\Service\CreateUserService;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -88,6 +89,6 @@ class SecurityController extends AbstractController
     public function logout(): Response
     {
         // controller can be blank: it will never be called!
-        throw new \Exception('Don\'t forget to activate logout in security.yaml');
+        throw new Exception('Don\'t forget to activate logout in security.yaml');
     }
 }
