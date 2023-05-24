@@ -73,6 +73,15 @@ class AppFixtures extends Fixture
             Carbon::setTestNow(Carbon::getTestNow()->addDays(2));
         }
 
+//        $product1 = new Product(
+//            name: 'Жизнь бродячего кота. Том 4',
+//            code: '45',
+//            price: 500,
+//            description: 'Описание...',
+//            image: '/uploads/images/products/45.webp'
+//        );
+//        $manager->persist($product1);
+
 
         $manager->flush();
     }
