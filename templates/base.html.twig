@@ -54,7 +54,7 @@
             $(document).ready(function () {
                 $(".cart-add-to-cart").click(function () {
                     var id = $(this).attr("data-id");
-                    $.post("/cart/addAjax/" + id, {}, function (data) {
+                    $.post("/cart/add/ajax/" + id, {}, function (data) {
                         $("#cart-count").html(data);
                         var product_count = $("#product-" + id).val(); /*!!!!!!!!!!!!!!!!!!!*/
                         product_count++;
@@ -67,7 +67,7 @@
             $(document).ready(function () {
                 $(".cart-remove-from-cart").click(function () {
                     var id = $(this).attr("data-id");
-                    $.post("/cart/removeAjax/" + id, {}, function (data) {
+                    $.post("/cart/remove/ajax/" + id, {}, function (data) {
                         $("#cart-count").html(data);
                         var product_count = $("#product-" + id).val(); /*!!!!!!!!!!!!!!!!!!!*/
 
