@@ -4,7 +4,6 @@ namespace App\Site\Controller;
 
 
 use App\Products\Repository\ProductRepository;
-use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -55,11 +54,5 @@ class SiteController extends AbstractController
     public function refund(): Response
     {
         return $this->render('site/refund.html.twig');
-    }
-
-    #[Route('/bye', name: 'app_site_bye')]
-    public function bye(): Response
-    {
-        throw new Exception('Implement me pls :3');
     }
 }
