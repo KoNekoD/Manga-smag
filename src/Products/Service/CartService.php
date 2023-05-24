@@ -88,14 +88,7 @@ class CartService
         $session = $this->requestStack->getSession();
         $storedCart = $this->createOrGetSessionCart($session);
 
-        $product = $this->productRepository->findById($id);
-
-        $storedCart->removeProduct(
-            $id,
-            $product->getName(),
-            $product->getPrice(),
-            $product->getImage()
-        );
+        $storedCart->removeProduct($id);
         $session->set('cart', $this->serializerService->serialize($storedCart));
     }
 }
