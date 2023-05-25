@@ -2,17 +2,17 @@
 
 {% block body %}
     <section>
-        <div class="">
+        <div class="mt-10 mb-30 ">
             <div class="text-center ">
                 <div class="">
-                    <div class="mt-10 ">
+                    <div class="">
                         {% if errors|length > 0 %}
                             {% for error in errors %}
                                 <p> - {{ error }}</p>
                             {% endfor %}
                         {% endif %}
                         {% if done %}
-                            <p class="mb-20 mt-32 text-xl font-sans">Заказ оформлен. Мы Вам перезвоним.</p>
+                            <p class="text-xl font-sans mt-10 mb-30 ">Заказ оформлен. Мы Вам перезвоним.</p>
                         {% else %}
                             <p class="font-sans text-xl">Выбрано товаров: {{ cart.totalCount }}, на
                                 сумму: {{ cart.totalPrice }}, ₽</p><br/>

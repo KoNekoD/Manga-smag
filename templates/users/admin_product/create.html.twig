@@ -2,7 +2,7 @@
 
 {% block body %}
     <div class="flex justify-center mt-10 mb-10">
-        <div class="flex flex-col rounded-lg bg-zinc-100 shadow-lg">
+        <div class="flex flex-col rounded-lg bg-zinc-200 shadow-lg">
             <div class="p-6 flex flex-col justify-start">
                 <div class="mt-5 text-center text-xl">
                     <button class="bg-zinc-300 text-xl hover:bg-zinc-400 text-black py-2 px-4 rounded mb-5">
@@ -20,25 +20,25 @@
                         <div class="login-form">
                             <form action="{{ path('app_admin_product_create') }}" method="post"
                                   enctype="multipart/form-data" class="flex flex-col">
-                                <label class="mb-2 mt-2 font-sans text-base" for="name">Название товара</label>
+                                <p class="mb-2 mt-2 font-sans text-xl" for="name">Название товара</p>
                                 <input type="text" name="name" id="name"
                                        class="border-2 border-black rounded py-1 px-2"
                                        value="">
 
-                                <label for="code" class="mb-2 mt-2 font-sans text-base">Артикул</label>
+                                <p for="code" class="mb-2 mt-2 font-sans text-xl">Артикул</p>
                                 <input type="text" name="code" id="code"
                                        class="border-2 border-black rounded py-1 px-2"
                                        value="">
 
-                                <label for="price" class="mb-2 mt-2 font-sans text-base">Стоимость, ₽</label>
+                                <p for="price" class="mb-2 mt-2 font-sans text-xl">Стоимость, ₽</p>
                                 <input type="text" name="price" id="price"
                                        class="border-2 border-black rounded py-1 px-2" value="">
 
-                                <label for="image" class="mb-2 mt-2 font-sans text-base">Изображение товара</label>
+                                <p for="image" class="mb-2 mt-2 font-sans text-xl">Изображение товара</p>
                                 <input type="file" name="image" id="image"
                                        class="border-2 border-black rounded py-1 px-2" value=""><br>
 
-                                <label for="description" class="mb-2 mt-2 font-sans text-base">Сюжет</label>
+                                <p for="description" class="mb-2 mt-2 font-sans text-xl">Сюжет</p>
                                 <textarea name="description"
                                           id="description"
                                           rows="20"

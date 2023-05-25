@@ -1,8 +1,8 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <div class="flex justify-center mt-16">
-        <div class="flex flex-col md:flex-row md:max-w-6xl rounded-lg bg-zinc-100 shadow-lg">
+    <div class="flex justify-center mt-10 mb-10">
+        <div class="flex flex-col md:flex-row md:max-w-6xl rounded-lg  shadow-lg">
             <img class=" w-full h-96 md:h-auto object-cover md:w-96 rounded-t-lg md:rounded-none md:rounded-l-lg "
                  src="{{ asset('/template/images/brand/302.png') }}"/>
             <div class="p-6 flex flex-col justify-start">
@@ -12,9 +12,6 @@
                 </button>
                 <button class="bg-zinc-300 text-xl hover:bg-zinc-400 text-black  font-sans py-2 px-4 rounded  mb-5">
                     <a href="{{ path('app_admin_order_index') }}">Управление заказами</a>
-                </button>
-                <button class="bg-zinc-300 text-xl hover:bg-zinc-400 text-black  font-sans py-2 px-4 rounded  mb-5">
-                    <a href="{{ path('app_site_index') }}">Главная сайта</a>
                 </button>
                 <button class="bg-zinc-300 text-xl hover:bg-zinc-400 text-black  font-sans py-2 px-4 rounded">
                     <a href="{{ path('app_logout') }}">Выйти</a>

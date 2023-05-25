@@ -71,7 +71,7 @@
     <!-- маленький слайдер-->
     <div data-controller="carousel_mini" class="swiper-container"
          data-carousel-options-value='{"direction": "horizontal"}'>
-        <p class="text-left  font-sans text-black text-4xl ml-10 mb-10">Скоро в продаже</p>
+        <p class="text-left  font-sans text-black text-4xl ml-10  mb-10">Скоро в продаже</p>
         <div class="swiper-wrapper">
             <div class="swiper-slide">
                 <img class="rounded-lg" src="{{ asset('/template/images/brand/1.webp') }}"/>
@@ -110,7 +110,7 @@
     </div>
 
     <div data-controller="carousel_mini_mini" class="swiper-container">
-        <p class="text-left  font-sans text-black text-4xl ml-10 mb-10">Наши новинки</p>
+        <p class="text-left  font-sans text-black text-4xl ml-10 mt-10 mb-10">Наши новинки</p>
         <div class="swiper-wrapper">
             {% for product in latestProducts %}
                 <div class="swiper-slide">
@@ -122,21 +122,19 @@
                             <h3 class="text-lg">
                                 {{ product.name }}
                             </h3>
-                            <div class="flex flex-col justify-center items-start">
                                 <p class="space-x-2 grid-flow-row">
                                     <span class="text-2xl font-light">
                                         <b>{{ product.price }}₽</b>
                                     </span>
                                 </p>
                                 {% if is_granted('ROLE_USER') %}
-                                    <div class="flex justify-between items-center">
-                                        <a href="#" class="px-2 py-1 bg-zinc-300 hover:bg-zinc-400
+                                    <div class=" flex justify-between items-center">
+                                        <a href="#" class="px-4 py-2 bg-zinc-300 hover:bg-zinc-400
                 text-center font-sans text-base text-black rounded duration-300 add-to-cart"
                                            data-id="{{ product.id }}">
                                             В корзину</a>
                                     </div>
                                 {% endif %}
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -145,8 +143,8 @@
 
     </div>
 
-    <!--блок о нас-->
-    <p class="text-left  font-sans text-black text-4xl ml-10 mb-10">Контакты</p>
+    <!--блок контакты -->
+    <p class="text-left  font-sans text-black text-4xl ml-10 mt-10 mb-10">Контакты</p>
     <div class="flex justify-center mb-10">
         <div class="flex flex-col md:flex-row md:max-w-6xl rounded-lg bg-zinc-100 shadow-lg ">
             <img class="  h-64 md:h-auto object-cover md:w-72 rounded-t-lg md:rounded-none md:rounded-l-lg "

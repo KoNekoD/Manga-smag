@@ -2,7 +2,7 @@
 
 {% block body %}
     <div class="flex justify-center mt-10 mb-10">
-        <div class="flex flex-col md:flex-row md:max-w-6xl rounded-lg bg-zinc-100 shadow-lg">
+        <div class="flex flex-col rounded-lg bg-zinc-200 shadow-lg">
             <div class="p-6 flex flex-col justify-start">
                 <div class="mt-5 text-center text-xl">
                     <button class="bg-zinc-300 text-xl hover:bg-zinc-400 text-black py-2 px-4 rounded mb-5">
@@ -15,25 +15,25 @@
                             <form action="{{ path('app_admin_product_update', { 'id': product.id }) }}" method="post"
                                   enctype="multipart/form-data">
 
-                                <p class="mb-1 mt-1 font-sans text-base">Название товара</p>
+                                <p class="mb-1 mt-1 font-sans text-xl">Название товара</p>
                                 <input type="text" name="name" class="border-2 border-black rounded py-1 px-2"
                                        value="{{ product.name }}">
 
-                                <p class="mb-1 mt-1 font-sans text-base">Артикул</p>
+                                <p class="mb-1 mt-1 font-sans text-xl">Артикул</p>
                                 <input type="number" name="code" class="border-2 border-black rounded py-1 px-2"
                                        value="{{ product.code }}">
 
-                                <p class="mb-1 mt-1 font-sans text-base">Стоимость, ₽</p>
+                                <p class="mb-1 mt-1 font-sans text-xl">Стоимость, ₽</p>
                                 <input type="number" name="price" class="border-2 border-black rounded py-1 px-2"
                                        value="{{ product.price }}">
                                 <br/><br/>
 
-                                <p class=" font-sans text-base">Изображение товара</p>
+                                <p class=" font-sans text-xl">Изображение товара</p>
                                 <img src="{{ product.image }}" width="200"/>
                                 <input type="file" name="image" class="border-2 border-black rounded py-1 px-2"
                                        value="{{ product.image }}">
 
-                                <p class="mb-1 mt-1 font-sans text-base">Сюжет</p>
+                                <p class="mb-1 mt-1 font-sans text-xl">Сюжет</p>
                                 <textarea class="border-2 border-black rounded py-1 px-2"
                                           name="description">{{ product.description }}</textarea><br>
                                 <input type="submit" name="submit"

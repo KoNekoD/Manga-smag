@@ -39,13 +39,15 @@ class MeController extends AbstractController
         ]);
     }
 
-    #[Route('/me/edit', name: 'app_me_edit', methods: ['GET'])]
+    #[Route('/me/edit', name: 'app_me_edit', methods: ['GET', 'POST'])]
     public function edit(
         Request                     $request,
         UserPasswordHasherInterface $passwordHasher,
         EntityManagerInterface      $entityManager
     ): Response
     {
+        $isSuccess = false;
+
         /** @var User $user */
         $user = $this->userRepository->find(
             $this->userFetcher->getAuthUser()->getId()
@@ -68,11 +70,13 @@ class MeController extends AbstractController
                 $user->setPassword($dto->newPassword, $passwordHasher);
             }
             $entityManager->flush();
+            $isSuccess = true;
         }
 
         return $this->render('users/me/edit.html.twig', [
             'errors' => $errors,
-            'user' => $user
+            'user' => $user,
+            'isSuccess' => $isSuccess
         ]);
     }
 }

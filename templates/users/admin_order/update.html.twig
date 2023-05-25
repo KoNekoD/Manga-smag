@@ -2,7 +2,7 @@
 
 {% block body %}
     <div class="flex justify-center mt-10 mb-10">
-        <div class="flex flex-col rounded-lg bg-zinc-100 shadow-lg">
+        <div class="flex flex-col rounded-lg bg-zinc-200 shadow-lg">
             <div class="p-6 flex flex-col justify-start">
                 <div class="text-center">
                     <button class="font-sans bg-zinc-300 text-xl hover:bg-zinc-400 text-black py-2 px-4 rounded  mt-5">
@@ -17,22 +17,22 @@
                         <div class="login-form">
                             <form action="{{ path('app_admin_order_update', { 'id': order.id }) }}" method="post">
 
-                                <p class="mb-2 mt-2 font-sans text-base">Клиент</p>
+                                <p class="mb-2 mt-2 font-sans text-xl">Клиент</p>
                                 <input type="text" name="userName"
                                        class="border-2 border-black rounded py-1 px-2" placeholder=""
                                        value="{{ order.username }}">
 
-                                <p class="mb-2 mt-2 font-sans text-base">Телефон клиента</p>
+                                <p class="mb-2 mt-2 font-sans text-xl">Телефон клиента</p>
                                 <input type="text" name="userPhone"
                                        class="border-2 border-black rounded py-1 px-2" placeholder=""
                                        value="{{ order.userPhone }}">
 
-                                <p class="mb-2 mt-2 font-sans text-base">Комментарий клиента</p>
+                                <p class="mb-2 mt-2 font-sans text-xl">Комментарий клиента</p>
                                 <input type="text" name="userComment"
                                        class="border-2 border-black rounded py-1 px-2" placeholder=""
                                        value="{{ order.userComment }}">
 
-                                <p class="mb-2 mt-2 font-sans text-base">Статус</p>
+                                <p class="mb-2 mt-2 font-sans text-xl">Статус</p>
                                 <select name="status" class="border-2 border-black rounded py-1 px-2">
                                     <option value="1"
                                             {% if order.status is same as '1' %} selected="selected"{% endif %}
