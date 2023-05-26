@@ -10,17 +10,17 @@
                     {% endfor %}
                 {% else %}
                     {% if isSuccess %}
-                        <p class="text-xl font-sans mb-20 mt-32">Данные отредактированы!</p>
+                        <p class="text-xl font-sans">Данные отредактированы!</p>
                     {% endif %}
                 {% endif %}
                 <div class="signup-form">
                     <h2 class="text-xl font-sans mb-2 mt-10">Редактирование данных</h2>
                     <form action="{{ path('app_me_edit') }}" method="post">
                         <p class="mb-2 mt-2 font-sans text-base">Имя:</p>
-                        <input type="text" name="name" class="border-2 border-black rounded py-1 px-2"
+                        <input type="text" name="newName" class="border-2 border-black rounded py-1 px-2"
                                placeholder="Имя" value="{{ user.name }}"/>
                         <p class="mb-2 mt-2 font-sans text-base">Новый пароль:</p>
-                        <input type="password" name="password" class="border-2 border-black rounded py-1 px-2"
+                        <input type="password" name="newPassword" class="border-2 border-black rounded py-1 px-2"
                                placeholder="Пароль" value=""/>
                         <br/>
                         <input type="submit" name="submit"

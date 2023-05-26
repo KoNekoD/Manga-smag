@@ -47,30 +47,30 @@ class MeController extends AbstractController
     ): Response
     {
         $isSuccess = false;
-
         /** @var User $user */
         $user = $this->userRepository->find(
             $this->userFetcher->getAuthUser()->getId()
         );
-
-        /** @var UserEditDTO $dto */
-        $dto = $this->serializerService->denormalize($request->request->all(), UserEditDTO::class);
-
-        $validationErrors = $this->validator->validate($dto);
-
         $errors = [];
-        if ($validationErrors->count() > 0) {
-            foreach ($validationErrors as $error) {
-                $errors[] = $error->getPropertyPath() . ' ' . $error->getMessage();
+
+        if ($request->getContent()){
+            /** @var UserEditDTO $dto */
+            $dto = $this->serializerService->denormalize($request->request->all(), UserEditDTO::class);
+
+            $validationErrors = $this->validator->validate($dto);
+            if ($validationErrors->count() > 0) {
+                foreach ($validationErrors as $error) {
+                    $errors[] = $error->getPropertyPath() . ' ' . $error->getMessage();
+                }
+            } else {
+                // Update user
+                $user->updateInformation($dto);
+                if (!empty($dto->newPassword)) {
+                    $user->setPassword($dto->newPassword, $passwordHasher);
+                }
+                $entityManager->flush();
+                $isSuccess = true;
             }
-        } else {
-            // Update user
-            $user->updateInformation($dto);
-            if (!empty($dto->newPassword)) {
-                $user->setPassword($dto->newPassword, $passwordHasher);
-            }
-            $entityManager->flush();
-            $isSuccess = true;
         }
 
         return $this->render('users/me/edit.html.twig', [

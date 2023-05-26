@@ -17,7 +17,7 @@ class OrderProduct
         #[ORM\ManyToOne(targetEntity: Order::class, inversedBy: 'elements')]
         #[ORM\JoinColumn(name: 'order_id', referencedColumnName: 'id')]
         private readonly Order   $order,
-        #[ORM\OneToOne(targetEntity: Product::class)]
+        #[ORM\ManyToOne(targetEntity: Product::class)]
         #[ORM\JoinColumn(name: 'product_id', referencedColumnName: 'id', onDelete: 'CASCADE')]
         private readonly Product $product,
         #[ORM\Column]

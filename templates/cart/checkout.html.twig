@@ -2,7 +2,7 @@
 
 {% block body %}
     <section>
-        <div class="mt-10 mb-30 ">
+        <div class="my-10 mb-30 ">
             <div class="text-center ">
                 <div class="">
                     <div class="">
@@ -12,7 +12,9 @@
                             {% endfor %}
                         {% endif %}
                         {% if done %}
-                            <p class="text-xl font-sans mt-10 mb-30 ">Заказ оформлен. Мы Вам перезвоним.</p>
+                            <div class="h-96 w-full flex justify-center items-center">
+                            <p class="text-xl font-sans">Заказ оформлен. Мы Вам перезвоним.</p>
+                            </div>
                         {% else %}
                             <p class="font-sans text-xl">Выбрано товаров: {{ cart.totalCount }}, на
                                 сумму: {{ cart.totalPrice }}, ₽</p><br/>

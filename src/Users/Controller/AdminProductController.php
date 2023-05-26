@@ -44,10 +44,10 @@ class AdminProductController extends AbstractController
 
             // Can be moved to factory:
             $product = new Product(
-                $dto->name,
-                (int)$dto->code,
-                (float)$dto->price,
-                $dto->description,
+                name: $dto->name,
+                code: (int)$dto->code,
+                price: (float)$dto->price,
+                description: $dto->description,
             );
 
             $imageFile = $request->files->get('image');

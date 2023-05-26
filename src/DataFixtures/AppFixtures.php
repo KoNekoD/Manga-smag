@@ -63,11 +63,11 @@ class AppFixtures extends Fixture
         foreach ($productsLegacy as $item) {
             $product = new Product(
             // 0 `name`, 1 `code`, 2 `price`, 3 `description`, 4 `image`
-                $item[0],
-                $item[1],
-                $item[2],
-                $item[3],
-                $item[4]
+                name: $item[0],
+                code: $item[1],
+                price: $item[2],
+                description: $item[3],
+                image: $item[4]
             );
             $manager->persist($product);
             Carbon::setTestNow(Carbon::getTestNow()->addDays(2));
