@@ -25,6 +25,7 @@ class CartService
     {
         $session = $this->requestStack->getSession();
         $session->set('cart', $this->serializerService->serialize(new CartDTO()));
+        $session->set('cart-products-count', 0);
     }
 
     public function getCartAndRefreshData(): CartDTO
@@ -44,6 +45,7 @@ class CartService
                 }
             }
             $session->set('cart', $this->serializerService->serialize($storedCart));
+            $session->set('cart-products-count', $storedCart->getTotalCount());
         }
 
         return $storedCart;
@@ -54,6 +56,7 @@ class CartService
         if (null === $session->get('cart')) {
             $storedCart = new CartDTO();
             $session->set('cart', $this->serializerService->serialize($storedCart));
+            $session->set('cart-products-count', 0);
         } else {
             $storedCart = $this->serializerService->deserialize(
                 $session->get('cart'),
@@ -81,6 +84,7 @@ class CartService
             )
         );
         $session->set('cart', $this->serializerService->serialize($storedCart));
+        $session->set('cart-products-count', $storedCart->getTotalCount());
     }
 
     public function removeOneProduct(int $id): void
@@ -90,5 +94,16 @@ class CartService
 
         $storedCart->removeProduct($id);
         $session->set('cart', $this->serializerService->serialize($storedCart));
+        $session->set('cart-products-count', $storedCart->getTotalCount());
+    }
+
+    public function removeProductPosition(int $id): void
+    {
+        $session = $this->requestStack->getSession();
+        $storedCart = $this->createOrGetSessionCart($session);
+
+        $storedCart->removeProductPosition($id);
+        $session->set('cart', $this->serializerService->serialize($storedCart));
+        $session->set('cart-products-count', $storedCart->getTotalCount());
     }
 }

@@ -25,7 +25,7 @@
                                         </div>
                                         <div class="flex flex-col justify-between ml-4 flex-grow">
                                             <span class="font-bold text-sm">{{ cartProduct.name }}</span>
-                                            <a href="{{ path('app_cart_remove_ajax', { 'id': cartProduct.id }) }}"
+                                            <a onclick="fetch('/cart/remove-position/ajax/{{ cartProduct.id }}');window.location.reload();"
                                                class="font-semibold hover:text-fuchsia-600 text-gray-500 text-xs">Удалить</a>
                                         </div>
                                     </div>
@@ -35,7 +35,7 @@
                                                 <path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
                                             </svg>
                                         </button>
-                                        <input id="product-{{ cartProduct.id }}" class="mx-2 border text-center w-8"
+                                        <input id="product-{{ cartProduct.id }}" class="mx-2 border text-center w-12"
                                                type="text" value="{{ cartProduct.count }}">
                                         <button data-id="{{ cartProduct.id }}" class="cart-add-to-cart">
                                             <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">

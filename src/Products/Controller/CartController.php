@@ -114,4 +114,12 @@ class CartController extends AbstractController
 
         return new Response(status: Response::HTTP_NO_CONTENT);
     }
+
+    #[Route('/cart/remove-position/ajax/{id}', name: 'app_cart_remove_position_ajax')]
+    public function removePositionAjax(int $id): Response
+    {
+        $this->cartService->removeProductPosition($id);
+
+        return new Response(status: Response::HTTP_NO_CONTENT);
+    }
 }

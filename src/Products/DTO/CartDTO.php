@@ -79,6 +79,9 @@ class CartDTO implements JsonSerializable
         $this->products[] = $dto;
     }
 
+    /**
+     * Remove 1 item of product form cart
+     */
     public function removeProduct(int $id): void
     {
         foreach ($this->products as $i => $product) {
@@ -89,6 +92,19 @@ class CartDTO implements JsonSerializable
                 }
 
                 $this->products[$i]->count--;
+                return;
+            }
+        }
+    }
+
+    /**
+     * Remove a product from the cart
+     */
+    public function removeProductPosition(int $id): void
+    {
+        foreach ($this->products as $i => $product) {
+            if ($product->id === $id) {
+                unset($this->products[$i]);
                 return;
             }
         }

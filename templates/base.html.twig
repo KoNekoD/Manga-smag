@@ -13,8 +13,8 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body class="overflow-x-hidden bg-zinc-100">
-        {{ include('layouts/header.html.twig') }}
+    <body class="overflow-x-hidden bg-zinc-100 flex flex-col justify-between h-screen">
+    {{ include('layouts/header.html.twig') }}
         {% block body %}{% endblock %}
         {{ include('layouts/footer.html.twig') }}
         <script>
@@ -48,34 +48,36 @@
                 });
             });
         </script>
-        <script src="https://code.jquery.com/jquery-3.6.2.min.js"
-                integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
-        <script>
-            $(document).ready(function () {
-                $(".cart-add-to-cart").click(function () {
-                    var id = $(this).attr("data-id");
-                    $.post("/cart/add/ajax/" + id, {}, function (data) {
-                        $("#cart-count").html(data);
-                        var product_count = $("#product-" + id).val(); /*!!!!!!!!!!!!!!!!!!!*/
-                        product_count++;
-                        $("#product-" + id).val(product_count) /*!!!!!!!!!!!!!!!!!!!*/
-                    });
-                    return false;
+    <script src="https://code.jquery.com/jquery-3.6.2.min.js"
+            integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $(".cart-add-to-cart").click(function () {
+                var id = $(this).attr("data-id");
+                var product_count = $("#product-" + id).val(); /*!!!!!!!!!!!!!!!!!!!*/
+                $.post("/cart/add/ajax/" + id, {}, function (data) {
+                    $("#cart-count").html(data);
+                    product_count++;
+                    $("#product-" + id).val(product_count) /*!!!!!!!!!!!!!!!!!!!*/
                 });
+                return false;
             });
+        });
 
-            $(document).ready(function () {
-                $(".cart-remove-from-cart").click(function () {
-                    var id = $(this).attr("data-id");
+        $(document).ready(function () {
+            $(".cart-remove-from-cart").click(function () {
+                var id = $(this).attr("data-id");
+                var product_count = $("#product-" + id).val(); /*!!!!!!!!!!!!!!!!!!!*/
+                if (product_count > 1) {
                     $.post("/cart/remove/ajax/" + id, {}, function (data) {
                         $("#cart-count").html(data);
-                        var product_count = $("#product-" + id).val(); /*!!!!!!!!!!!!!!!!!!!*/
 
                         $("#product-" + id).val(product_count - 1); /*!!!!!!!!!!!!!!!!!!!*/
                     });
-                    return false;
-                });
+                }
+                return false;
             });
-        </script>
+        });
+    </script>
     </body>
 </html>

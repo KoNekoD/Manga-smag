@@ -114,7 +114,7 @@
         <div class="swiper-wrapper">
             {% for product in latestProducts %}
                 <div class="swiper-slide">
-                    <div class="w-48 bg-white drop-shadow-md rounded-lg ml-2 mr-2 mb-2">
+                    <div class="w-48 lg:w-64 bg-white drop-shadow-md rounded-lg ml-2 mr-2 mb-2">
                         <a href="{{ path('app_product_view', { 'id': product.id }) }}">
                             <img class="object-cover rounded-tl-lg rounded-tr-lg"
                                  style="height: 300px; width: 210px;" src="{{ product.image }}"></a>

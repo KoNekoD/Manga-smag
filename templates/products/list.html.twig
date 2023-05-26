@@ -1,14 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {% for flash in app.flashes('error') %}
+        <p class="text-center py-2 font-sans text-red-600">{{ flash }}</p>
+    {% endfor %}
     <div class=" ml-10  mr-10 mb-10 mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6">
         {% for product in products %}
-            <div class=" w-48 bg-white drop-shadow-md rounded-lg flex-col justify-between items-center">
+            <div class="w-48 lg:w-64 bg-white drop-shadow-md rounded-lg flex-col justify-between items-center">
                 <a href="{{ path('app_product_view', {'id': product.id}) }}">
                     <img class="object-cover rounded-tl-lg rounded-tr-lg " style="height: 300px; width: 210px;"
                          src="{{ product.image }}">
                 </a>
-                <div class=" px-5 py-3 space-y-2 grid grid-rows-3">
+                <div class="px-5 py-3 space-y-2 grid grid-rows-3">
                     <h3 class="text-lg">
                         {{ product.name }}
                     </h3>
