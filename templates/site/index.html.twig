@@ -2,16 +2,16 @@
 
 {% block body %}
     <div>
-        <img class="h-64 w-full" src="{{ asset('/template/images/brand/akibastrip_283.jpg') }}">
+        <img class="h-64 w-full" alt="pop" src="{{ asset('/template/images/brand/akibastrip_283.jpg') }}">
     </div>
 
     <!--блок о нас-->
-    <div class="max-w-md mx-auto bg-zinc-200  overflow-hidden md:max-w-4xl mb-10 mt-10">
+    <div class="max-w-md mx-auto bg-zinc-200  md:max-w-4xl mb-10 mt-10">
         <div class="md:flex">
             <div class="md:shrink-0">
                 <img class="h-96 w-full object-cover rounded-lg  "
                      src="{{ asset('/template/images/brand/bf8b41d191ab4f098d6a206666531ce9.jpg') }}"
-                     alt="Modern building architecture">
+                     alt="">
             </div>
             <div class="p-8 mt-11">
                 <p class="mt-2 text-black text-xl"><b>О НАС</b><br>
@@ -22,7 +22,6 @@
             </div>
         </div>
     </div>
-
     <!-- большой слайдер-->
     <div data-controller="carousel_big" class="relative swiper-container"
          data-carousel-options-value='{"direction": "horizontal"}'>
@@ -114,7 +113,7 @@
         <div class="swiper-wrapper">
             {% for product in latestProducts %}
                 <div class="swiper-slide">
-                    <div class="w-48 lg:w-64 bg-white drop-shadow-md rounded-lg ml-2 mr-2 mb-2">
+                    <div class=" xl:w-48 lg:w-64 bg-white drop-shadow-md rounded-lg ml-2 mr-2 mb-2">
                         <a href="{{ path('app_product_view', { 'id': product.id }) }}">
                             <img class="object-cover rounded-tl-lg rounded-tr-lg"
                                  style="height: 300px; width: 210px;" src="{{ product.image }}"></a>
@@ -122,24 +121,24 @@
                             <h3 class="text-lg">
                                 {{ product.name }}
                             </h3>
-                                <p class="space-x-2 grid-flow-row">
+                            <p class="space-x-2 grid-flow-row">
                                     <span class="text-2xl font-light">
                                         <b>{{ product.price }}₽</b>
                                     </span>
-                                </p>
-                                {% if is_granted('ROLE_USER') %}
-                                    <div class=" flex justify-between items-center">
-                                        <a href="#" class="px-4 py-2 bg-zinc-300 hover:bg-zinc-400
+                            </p>
+                            {% if is_granted('ROLE_USER') %}
+                                <div class=" flex justify-between items-center">
+                                    <a href="#" class="px-4 py-2 bg-zinc-300 hover:bg-zinc-400
                 text-center font-sans text-base text-black rounded duration-300 add-to-cart"
-                                           data-id="{{ product.id }}">
-                                            В корзину</a>
-                                    </div>
-                                {% endif %}
+                                       data-id="{{ product.id }}">
+                                        В корзину</a>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
             {% endfor %}
-            </div>
+        </div>
 
     </div>
 
@@ -169,5 +168,6 @@
             </div>
         </div>
     </div>
+
 
 {% endblock %}

@@ -14,20 +14,20 @@
         <!-- Navigation -->
         <div class="hidden md:flex items-center space-x-6">
             <form action="{{ path('app_product_search') }}" method="get">
-                <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only "></label>
                 <div class="relative">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none"
+                        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 " fill="none"
                              stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                         </svg>
                     </div>
                     <input type="search" name="search" id="default-search"
-                           class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                           class="block h-12 w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-zinc-100 focus:border-zinc-500 "
                            placeholder="Поиск товара" required>
                     <button type="submit"
-                            class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">
+                            class="text-black absolute right-2.5 bottom-2.5 bg-zinc-300 hover:bg-zinc-400 focus:outline-none font-medium rounded-lg text-sm px-2 py-1">
                         Поиск
                     </button>
                 </div>
@@ -42,14 +42,24 @@
                 </span>
                 {% set cartProductsCount = app.session.get('cart-products-count') %}
                 {% if cartProductsCount > 0 %}
-                    <div class="absolute -right-4 -top-4 rounded-full w-6 h-6 text-sm font-sans flex justify-center items-center border border-amber-700">
+                    <div class="absolute -right-3 -top-1 rounded-full w-5 h-5 text-sm font-sans flex justify-center items-center border border-zinc-600 bg-zinc-600 text-white">
                         <span id="header-cart-counter">{{ cartProductsCount }}</span>
                     </div>
                 {% endif %}
             </a>
-            <!--<a class="p-2 border-b-4 border-zinc-300 hover:border-zinc-400 transition duration-200 ease-in-out"
-               href="{{ path('app_site_contact') }}">Связь</a>-->
+            {% if is_granted('IS_AUTHENTICATED') %}
+                <a href="{{ path('app_me') }}"
+                   class="text-black opacity-70 hover:opacity-100 duration-300 text-xl">
+                    <svg class="h-8 w-8 text-black"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />  <circle cx="12" cy="7" r="4" /></svg>
+                </a>
+            {% else %}
+                <a href="{{ path('app_login') }}"
+                   class="text-black opacity-70 hover:opacity-100 duration-300 text-xl">
+                    <svg class="h-8 w-8 text-black"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />  <circle cx="8.5" cy="7" r="4" />  <line x1="20" y1="8" x2="20" y2="14" />  <line x1="23" y1="11" x2="17" y2="11" /></svg>
+                </a><br>
+            {% endif %}
         </div>
+
         <!-- mobile nav -->
         <div id="mobile__nav"
              class="fixed top-0 right-0 flex flex-col h-44 w-44 pt-10 bg-zinc-200 text-black transform translate-x-full transition duration-300 ease-in-out md:hidden">
@@ -61,25 +71,30 @@
                href="{{ path('app_product_catalog') }}">Каталог</a>
             <a class="w-full hover:bg-zinc-300 p-2 px-4 transition duration-300 ease-in-out"
                href="{{ path('app_site_news') }}">Новости</a>
-            <a class="w-full hover:bg-zinc-300 p-2 px-4 transition duration-300 ease-in-out"
-               href="{{ path('app_cart_index') }}">Корзина</a>
-            <!--<a class="w-full hover:bg-zinc-300 p-2 px-4 transition duration-300 ease-in-out"
-               href="{{ path('app_site_contact') }}">Связь</a>-->
+            <a class="w-full hover:bg-zinc-300 p-2 px-4 transition duration-300 ease-in-out">
+                <span class="-ml-4 w-full hover:bg-zinc-300 p-2 px-4 transition duration-300 ease-in-out">Корзина</span>
+                {% set cartProductsCount = app.session.get('cart-products-count') %}
+                {% if cartProductsCount > 0 %}
+                    <div class="absolute left-24 top-36 rounded-full w-5 h-5 text-sm font-sans flex justify-center items-center border border-zinc-600 bg-zinc-600 text-white">
+                        <span id="header-cart-counter">{{ cartProductsCount }}</span>
+                    </div>
+                {% endif %}
+            </a>
             <form action="{{ path('app_product_search') }}" method="get">
-                <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only "></label>
                 <div class="relative">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none"
+                        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 " fill="none"
                              stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                         </svg>
                     </div>
                     <input type="search" name="search" id="default-search"
-                           class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                           class="block h-12 w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-zinc-100 focus:border-zinc-500 "
                            placeholder="Поиск товара" required>
                     <button type="submit"
-                            class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">
+                            class="text-black absolute right-2.5 bottom-2.5 bg-zinc-300 hover:bg-zinc-400 focus:outline-none font-medium rounded-lg text-sm px-2 py-1">
                         Поиск
                     </button>
                 </div>
@@ -88,3 +103,5 @@
     </nav>
     <section></section>
 </header>
+<!--<a class="w-full hover:bg-zinc-300 p-2 px-4 transition duration-300 ease-in-out"
+               href="{{ path('app_site_contact') }}">Связь</a>-->

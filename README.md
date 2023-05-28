@@ -4,20 +4,20 @@
 
 # Подготовка к запуску:
 
-bin/console doctrine:database:create
+php bin/console doctrine:database:create
 ### при изменении бд тыкать это
-bin/console doctrine:migrations:migrate
-bin/console doctrine:fixtures:load
+php bin/console doctrine:migrations:migrate
+php bin/console doctrine:fixtures:load
 
 # Как запустить:
 
 Терминал 1:
-> `symfony serve`
+> `.\symfony serve`
 
 Терминал 2:
 > `npm run dev-server`
 
-# Описание
+# Описание 
 
 entityManager->persist - Подготавливает объект для сохранения в базу через entityManager->flush в базу.
 Если он был получен из репозитория, то entityManager->persist НЕ НУЖЕН
