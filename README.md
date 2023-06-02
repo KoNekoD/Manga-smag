@@ -12,7 +12,7 @@ php bin/console doctrine:fixtures:load
 # Как запустить:
 
 Терминал 1:
-> `.\symfony serve`
+> `.\symfony serve![img.png](img.png)`
 
 Терминал 2:
 > `npm run dev-server`
