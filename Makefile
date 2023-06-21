@@ -10,11 +10,13 @@ fix_local_problems:
 	bin/console do:mi:mi -n
 	bin/console do:fi:lo -n
 
+SITE_DIR_NAME=manga-smag.nekochan.space
 local_deploy:
-	sudo rm -rf /var/www/zood.fun
-	sudo cp -r ./ /var/www/zood.fun
-	cd /var/www/zood.fun && \
+	-sudo rm -rf /var/www/${SITE_DIR_NAME}
+	sudo cp -r ./ /var/www/${SITE_DIR_NAME}
+	cd /var/www/${SITE_DIR_NAME} && \
 	sudo npm run build && \
+	sudo bin/console cache:clear && \
 	composer install --no-dev --no-interaction && \
 	sudo bin/console cache:clear && \
 	composer dump-env prod && \
